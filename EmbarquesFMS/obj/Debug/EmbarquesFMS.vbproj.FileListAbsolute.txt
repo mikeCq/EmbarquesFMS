@@ -1,1 +1,2 @@
 c:\users\msistemas\documents\visual studio 2015\Projects\EmbarquesFMS\EmbarquesFMS\bin\Debug\EmbarquesFMS.exe.config
+C:\Users\MSISTEMAS\Desktop\Desarrollo\EmbarquesFMS\EmbarquesFMS\bin\Debug\EmbarquesFMS.exe.config
