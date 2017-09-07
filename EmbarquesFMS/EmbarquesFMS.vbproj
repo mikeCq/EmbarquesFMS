@@ -92,11 +92,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FMSDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.vb">
+    <Compile Include="Embarques.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="Embarques.Designer.vb">
+      <DependentUpon>Embarques.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -116,6 +116,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Embarques.resx">
+      <DependentUpon>Embarques.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
