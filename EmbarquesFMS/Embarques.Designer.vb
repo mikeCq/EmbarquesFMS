@@ -29,6 +29,8 @@ Partial Class Embarques
         Me.SairToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GbDatosGenerales = New System.Windows.Forms.GroupBox()
         Me.Label30 = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.TbTelefonoAgricultor = New System.Windows.Forms.TextBox()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.TbDireccion = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
@@ -132,6 +134,8 @@ Partial Class Embarques
         'GbDatosGenerales
         '
         Me.GbDatosGenerales.Controls.Add(Me.Label30)
+        Me.GbDatosGenerales.Controls.Add(Me.Label31)
+        Me.GbDatosGenerales.Controls.Add(Me.TbTelefonoAgricultor)
         Me.GbDatosGenerales.Controls.Add(Me.Label26)
         Me.GbDatosGenerales.Controls.Add(Me.TbDireccion)
         Me.GbDatosGenerales.Controls.Add(Me.Label25)
@@ -187,7 +191,7 @@ Partial Class Embarques
         Me.GbDatosGenerales.Controls.Add(Me.Label1)
         Me.GbDatosGenerales.Location = New System.Drawing.Point(12, 27)
         Me.GbDatosGenerales.Name = "GbDatosGenerales"
-        Me.GbDatosGenerales.Size = New System.Drawing.Size(535, 583)
+        Me.GbDatosGenerales.Size = New System.Drawing.Size(535, 607)
         Me.GbDatosGenerales.TabIndex = 1
         Me.GbDatosGenerales.TabStop = False
         Me.GbDatosGenerales.Text = "Datos Generales"
@@ -195,16 +199,32 @@ Partial Class Embarques
         'Label30
         '
         Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(243, 104)
+        Me.Label30.Location = New System.Drawing.Point(243, 127)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(28, 13)
         Me.Label30.TabIndex = 53
         Me.Label30.Text = "Tipo"
         '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(359, 103)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(49, 13)
+        Me.Label31.TabIndex = 53
+        Me.Label31.Text = "Telefono"
+        '
+        'TbTelefonoAgricultor
+        '
+        Me.TbTelefonoAgricultor.Location = New System.Drawing.Point(414, 100)
+        Me.TbTelefonoAgricultor.Name = "TbTelefonoAgricultor"
+        Me.TbTelefonoAgricultor.Size = New System.Drawing.Size(108, 20)
+        Me.TbTelefonoAgricultor.TabIndex = 52
+        '
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(243, 76)
+        Me.Label26.Location = New System.Drawing.Point(6, 103)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(52, 13)
         Me.Label26.TabIndex = 53
@@ -212,15 +232,15 @@ Partial Class Embarques
         '
         'TbDireccion
         '
-        Me.TbDireccion.Location = New System.Drawing.Point(302, 73)
+        Me.TbDireccion.Location = New System.Drawing.Point(116, 100)
         Me.TbDireccion.Name = "TbDireccion"
-        Me.TbDireccion.Size = New System.Drawing.Size(220, 20)
+        Me.TbDireccion.Size = New System.Drawing.Size(219, 20)
         Me.TbDireccion.TabIndex = 52
         '
         'Label25
         '
         Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(299, 557)
+        Me.Label25.Location = New System.Drawing.Point(359, 580)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(39, 13)
         Me.Label25.TabIndex = 50
@@ -229,7 +249,7 @@ Partial Class Embarques
         'Label24
         '
         Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(6, 557)
+        Me.Label24.Location = New System.Drawing.Point(6, 580)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(49, 13)
         Me.Label24.TabIndex = 49
@@ -238,7 +258,7 @@ Partial Class Embarques
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(6, 530)
+        Me.Label23.Location = New System.Drawing.Point(6, 553)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(88, 13)
         Me.Label23.TabIndex = 48
@@ -247,7 +267,7 @@ Partial Class Embarques
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(6, 503)
+        Me.Label22.Location = New System.Drawing.Point(6, 526)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(45, 13)
         Me.Label22.TabIndex = 47
@@ -256,7 +276,7 @@ Partial Class Embarques
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(299, 475)
+        Me.Label21.Location = New System.Drawing.Point(299, 498)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(39, 13)
         Me.Label21.TabIndex = 46
@@ -265,7 +285,7 @@ Partial Class Embarques
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(6, 476)
+        Me.Label20.Location = New System.Drawing.Point(6, 499)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(61, 13)
         Me.Label20.TabIndex = 45
@@ -274,7 +294,7 @@ Partial Class Embarques
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(299, 449)
+        Me.Label19.Location = New System.Drawing.Point(359, 472)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(49, 13)
         Me.Label19.TabIndex = 44
@@ -283,7 +303,7 @@ Partial Class Embarques
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(6, 449)
+        Me.Label18.Location = New System.Drawing.Point(6, 472)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(39, 13)
         Me.Label18.TabIndex = 43
@@ -292,7 +312,7 @@ Partial Class Embarques
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(6, 422)
+        Me.Label17.Location = New System.Drawing.Point(6, 445)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(87, 13)
         Me.Label17.TabIndex = 42
@@ -301,7 +321,7 @@ Partial Class Embarques
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(299, 395)
+        Me.Label16.Location = New System.Drawing.Point(359, 418)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(49, 13)
         Me.Label16.TabIndex = 41
@@ -310,7 +330,7 @@ Partial Class Embarques
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(6, 395)
+        Me.Label15.Location = New System.Drawing.Point(6, 418)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(51, 13)
         Me.Label15.TabIndex = 40
@@ -319,7 +339,7 @@ Partial Class Embarques
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(6, 368)
+        Me.Label14.Location = New System.Drawing.Point(6, 391)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(82, 13)
         Me.Label14.TabIndex = 39
@@ -328,7 +348,7 @@ Partial Class Embarques
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(6, 341)
+        Me.Label13.Location = New System.Drawing.Point(6, 364)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(91, 13)
         Me.Label13.TabIndex = 38
@@ -336,91 +356,91 @@ Partial Class Embarques
         '
         'TbCelular
         '
-        Me.TbCelular.Location = New System.Drawing.Point(374, 554)
+        Me.TbCelular.Location = New System.Drawing.Point(414, 577)
         Me.TbCelular.Name = "TbCelular"
-        Me.TbCelular.Size = New System.Drawing.Size(148, 20)
+        Me.TbCelular.Size = New System.Drawing.Size(108, 20)
         Me.TbCelular.TabIndex = 37
         '
         'TbTelefono
         '
-        Me.TbTelefono.Location = New System.Drawing.Point(116, 554)
+        Me.TbTelefono.Location = New System.Drawing.Point(116, 577)
         Me.TbTelefono.Name = "TbTelefono"
         Me.TbTelefono.Size = New System.Drawing.Size(177, 20)
         Me.TbTelefono.TabIndex = 36
         '
         'TbAgenciaAduanal
         '
-        Me.TbAgenciaAduanal.Location = New System.Drawing.Point(116, 527)
+        Me.TbAgenciaAduanal.Location = New System.Drawing.Point(116, 550)
         Me.TbAgenciaAduanal.Name = "TbAgenciaAduanal"
         Me.TbAgenciaAduanal.Size = New System.Drawing.Size(406, 20)
         Me.TbAgenciaAduanal.TabIndex = 35
         '
         'TbAnticipo
         '
-        Me.TbAnticipo.Location = New System.Drawing.Point(116, 500)
+        Me.TbAnticipo.Location = New System.Drawing.Point(116, 523)
         Me.TbAnticipo.Name = "TbAnticipo"
         Me.TbAnticipo.Size = New System.Drawing.Size(177, 20)
         Me.TbAnticipo.TabIndex = 34
         '
         'TbDescuentoFlete
         '
-        Me.TbDescuentoFlete.Location = New System.Drawing.Point(374, 472)
+        Me.TbDescuentoFlete.Location = New System.Drawing.Point(374, 495)
         Me.TbDescuentoFlete.Name = "TbDescuentoFlete"
         Me.TbDescuentoFlete.Size = New System.Drawing.Size(148, 20)
         Me.TbDescuentoFlete.TabIndex = 33
         '
         'TbFlete
         '
-        Me.TbFlete.Location = New System.Drawing.Point(116, 473)
+        Me.TbFlete.Location = New System.Drawing.Point(116, 496)
         Me.TbFlete.Name = "TbFlete"
         Me.TbFlete.Size = New System.Drawing.Size(177, 20)
         Me.TbFlete.TabIndex = 32
         '
         'TbTelefonoDueno
         '
-        Me.TbTelefonoDueno.Location = New System.Drawing.Point(374, 446)
+        Me.TbTelefonoDueno.Location = New System.Drawing.Point(414, 469)
         Me.TbTelefonoDueno.Name = "TbTelefonoDueno"
-        Me.TbTelefonoDueno.Size = New System.Drawing.Size(148, 20)
+        Me.TbTelefonoDueno.Size = New System.Drawing.Size(108, 20)
         Me.TbTelefonoDueno.TabIndex = 31
         '
         'TbDueno
         '
-        Me.TbDueno.Location = New System.Drawing.Point(116, 446)
+        Me.TbDueno.Location = New System.Drawing.Point(116, 469)
         Me.TbDueno.Name = "TbDueno"
         Me.TbDueno.Size = New System.Drawing.Size(177, 20)
         Me.TbDueno.TabIndex = 30
         '
         'TbNoLicencia
         '
-        Me.TbNoLicencia.Location = New System.Drawing.Point(116, 419)
+        Me.TbNoLicencia.Location = New System.Drawing.Point(116, 442)
         Me.TbNoLicencia.Name = "TbNoLicencia"
         Me.TbNoLicencia.Size = New System.Drawing.Size(177, 20)
         Me.TbNoLicencia.TabIndex = 29
         '
         'TbTelefonoOperador
         '
-        Me.TbTelefonoOperador.Location = New System.Drawing.Point(374, 392)
+        Me.TbTelefonoOperador.Location = New System.Drawing.Point(414, 415)
         Me.TbTelefonoOperador.Name = "TbTelefonoOperador"
-        Me.TbTelefonoOperador.Size = New System.Drawing.Size(148, 20)
+        Me.TbTelefonoOperador.Size = New System.Drawing.Size(108, 20)
         Me.TbTelefonoOperador.TabIndex = 28
         '
         'TbOperador
         '
-        Me.TbOperador.Location = New System.Drawing.Point(116, 392)
+        Me.TbOperador.Location = New System.Drawing.Point(116, 415)
         Me.TbOperador.Name = "TbOperador"
         Me.TbOperador.Size = New System.Drawing.Size(177, 20)
         Me.TbOperador.TabIndex = 27
         '
         'TbPlacasJaula
         '
-        Me.TbPlacasJaula.Location = New System.Drawing.Point(116, 365)
+        Me.TbPlacasJaula.Location = New System.Drawing.Point(116, 388)
         Me.TbPlacasJaula.Name = "TbPlacasJaula"
         Me.TbPlacasJaula.Size = New System.Drawing.Size(177, 20)
         Me.TbPlacasJaula.TabIndex = 26
         '
         'TbPlacasTractor
         '
-        Me.TbPlacasTractor.Location = New System.Drawing.Point(116, 338)
+        Me.TbPlacasTractor.Location = New System.Drawing.Point(116, 361)
         Me.TbPlacasTractor.Name = "TbPlacasTractor"
         Me.TbPlacasTractor.Size = New System.Drawing.Size(177, 20)
         Me.TbPlacasTractor.TabIndex = 25
@@ -428,7 +448,7 @@ Partial Class Embarques
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(299, 313)
+        Me.Label12.Location = New System.Drawing.Point(299, 336)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(66, 13)
         Me.Label12.TabIndex = 24
@@ -437,7 +457,7 @@ Partial Class Embarques
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(6, 314)
+        Me.Label11.Location = New System.Drawing.Point(6, 337)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(26, 13)
         Me.Label11.TabIndex = 23
@@ -445,21 +465,21 @@ Partial Class Embarques
         '
         'TbNoSerie
         '
-        Me.TbNoSerie.Location = New System.Drawing.Point(374, 310)
+        Me.TbNoSerie.Location = New System.Drawing.Point(374, 333)
         Me.TbNoSerie.Name = "TbNoSerie"
         Me.TbNoSerie.Size = New System.Drawing.Size(148, 20)
         Me.TbNoSerie.TabIndex = 22
         '
         'TbAnio
         '
-        Me.TbAnio.Location = New System.Drawing.Point(116, 311)
+        Me.TbAnio.Location = New System.Drawing.Point(116, 334)
         Me.TbAnio.Name = "TbAnio"
         Me.TbAnio.Size = New System.Drawing.Size(177, 20)
         Me.TbAnio.TabIndex = 21
         '
         'TbNoMotor
         '
-        Me.TbNoMotor.Location = New System.Drawing.Point(374, 283)
+        Me.TbNoMotor.Location = New System.Drawing.Point(374, 306)
         Me.TbNoMotor.Name = "TbNoMotor"
         Me.TbNoMotor.Size = New System.Drawing.Size(148, 20)
         Me.TbNoMotor.TabIndex = 20
@@ -467,7 +487,7 @@ Partial Class Embarques
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(299, 287)
+        Me.Label10.Location = New System.Drawing.Point(299, 310)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(69, 13)
         Me.Label10.TabIndex = 19
@@ -476,7 +496,7 @@ Partial Class Embarques
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(6, 287)
+        Me.Label9.Location = New System.Drawing.Point(6, 310)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(31, 13)
         Me.Label9.TabIndex = 18
@@ -484,7 +504,7 @@ Partial Class Embarques
         '
         'TbColor
         '
-        Me.TbColor.Location = New System.Drawing.Point(116, 284)
+        Me.TbColor.Location = New System.Drawing.Point(116, 307)
         Me.TbColor.Name = "TbColor"
         Me.TbColor.Size = New System.Drawing.Size(177, 20)
         Me.TbColor.TabIndex = 17
@@ -492,7 +512,7 @@ Partial Class Embarques
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(6, 260)
+        Me.Label8.Location = New System.Drawing.Point(6, 283)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(75, 13)
         Me.Label8.TabIndex = 16
@@ -500,7 +520,7 @@ Partial Class Embarques
         '
         'TbMarca
         '
-        Me.TbMarca.Location = New System.Drawing.Point(116, 257)
+        Me.TbMarca.Location = New System.Drawing.Point(116, 280)
         Me.TbMarca.Name = "TbMarca"
         Me.TbMarca.Size = New System.Drawing.Size(406, 20)
         Me.TbMarca.TabIndex = 15
@@ -508,7 +528,7 @@ Partial Class Embarques
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(6, 233)
+        Me.Label7.Location = New System.Drawing.Point(6, 256)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(49, 13)
         Me.Label7.TabIndex = 14
@@ -516,7 +536,7 @@ Partial Class Embarques
         '
         'TbNoGuia
         '
-        Me.TbNoGuia.Location = New System.Drawing.Point(116, 230)
+        Me.TbNoGuia.Location = New System.Drawing.Point(116, 253)
         Me.TbNoGuia.Name = "TbNoGuia"
         Me.TbNoGuia.Size = New System.Drawing.Size(177, 20)
         Me.TbNoGuia.TabIndex = 13
@@ -524,7 +544,7 @@ Partial Class Embarques
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(6, 206)
+        Me.Label6.Location = New System.Drawing.Point(6, 229)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(102, 13)
         Me.Label6.TabIndex = 12
@@ -532,7 +552,7 @@ Partial Class Embarques
         '
         'TbLineaTransporte
         '
-        Me.TbLineaTransporte.Location = New System.Drawing.Point(116, 203)
+        Me.TbLineaTransporte.Location = New System.Drawing.Point(116, 226)
         Me.TbLineaTransporte.Name = "TbLineaTransporte"
         Me.TbLineaTransporte.Size = New System.Drawing.Size(406, 20)
         Me.TbLineaTransporte.TabIndex = 11
@@ -540,7 +560,7 @@ Partial Class Embarques
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 131)
+        Me.Label5.Location = New System.Drawing.Point(6, 154)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(78, 13)
         Me.Label5.TabIndex = 10
@@ -548,7 +568,7 @@ Partial Class Embarques
         '
         'TbObservaciones
         '
-        Me.TbObservaciones.Location = New System.Drawing.Point(116, 128)
+        Me.TbObservaciones.Location = New System.Drawing.Point(116, 151)
         Me.TbObservaciones.Multiline = True
         Me.TbObservaciones.Name = "TbObservaciones"
         Me.TbObservaciones.Size = New System.Drawing.Size(406, 68)
@@ -557,14 +577,14 @@ Partial Class Embarques
         'CbSandia
         '
         Me.CbSandia.FormattingEnabled = True
-        Me.CbSandia.Location = New System.Drawing.Point(302, 101)
+        Me.CbSandia.Location = New System.Drawing.Point(302, 124)
         Me.CbSandia.Name = "CbSandia"
         Me.CbSandia.Size = New System.Drawing.Size(178, 21)
         Me.CbSandia.TabIndex = 8
         '
         'TbPeso
         '
-        Me.TbPeso.Location = New System.Drawing.Point(116, 101)
+        Me.TbPeso.Location = New System.Drawing.Point(116, 124)
         Me.TbPeso.Name = "TbPeso"
         Me.TbPeso.Size = New System.Drawing.Size(121, 20)
         Me.TbPeso.TabIndex = 7
@@ -572,7 +592,7 @@ Partial Class Embarques
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 108)
+        Me.Label4.Location = New System.Drawing.Point(6, 131)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(55, 13)
         Me.Label4.TabIndex = 6
@@ -592,7 +612,7 @@ Partial Class Embarques
         Me.CbAgricultores.FormattingEnabled = True
         Me.CbAgricultores.Location = New System.Drawing.Point(116, 73)
         Me.CbAgricultores.Name = "CbAgricultores"
-        Me.CbAgricultores.Size = New System.Drawing.Size(121, 21)
+        Me.CbAgricultores.Size = New System.Drawing.Size(406, 21)
         Me.CbAgricultores.TabIndex = 4
         '
         'Label2
@@ -640,7 +660,7 @@ Partial Class Embarques
         Me.GbFiltros.Controls.Add(Me.Label27)
         Me.GbFiltros.Location = New System.Drawing.Point(553, 27)
         Me.GbFiltros.Name = "GbFiltros"
-        Me.GbFiltros.Size = New System.Drawing.Size(632, 583)
+        Me.GbFiltros.Size = New System.Drawing.Size(632, 607)
         Me.GbFiltros.TabIndex = 56
         Me.GbFiltros.TabStop = False
         Me.GbFiltros.Text = "Filtros"
@@ -650,7 +670,7 @@ Partial Class Embarques
         Me.DgvEmbarques.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgvEmbarques.Location = New System.Drawing.Point(10, 100)
         Me.DgvEmbarques.Name = "DgvEmbarques"
-        Me.DgvEmbarques.Size = New System.Drawing.Size(616, 474)
+        Me.DgvEmbarques.Size = New System.Drawing.Size(616, 497)
         Me.DgvEmbarques.TabIndex = 56
         '
         'BtFiltrar
@@ -715,7 +735,7 @@ Partial Class Embarques
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1185, 622)
+        Me.ClientSize = New System.Drawing.Size(1185, 642)
         Me.Controls.Add(Me.GbFiltros)
         Me.Controls.Add(Me.GbDatosGenerales)
         Me.Controls.Add(Me.MSMenu)
@@ -804,4 +824,6 @@ Partial Class Embarques
     Friend WithEvents DtpFechaInicio As DateTimePicker
     Friend WithEvents Label27 As Label
     Friend WithEvents Label30 As Label
+    Friend WithEvents Label31 As Label
+    Friend WithEvents TbTelefonoAgricultor As TextBox
 End Class

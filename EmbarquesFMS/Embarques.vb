@@ -1,5 +1,8 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Data.sq
 Public Class Embarques
+    Dim cnn As New SqlConnection(VarGlob.ConexionPrincipal)
+    Dim cmd As SqlCommand
     Private Sub Embarques_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarCombos()
     End Sub
@@ -50,7 +53,6 @@ Public Class Embarques
     End Sub
     Private Sub Guardar()
         Try
-            cnn.Open()
             If cnn.State <> ConnectionState.Open Then cnn.Open()
             Dim cmd As New SqlCommand("sp_InsEmb", cnn)
             cmd.CommandType = CommandType.StoredProcedure
@@ -58,6 +60,7 @@ Public Class Embarques
             cmd.Parameters.Add(New SqlParameter("@FechaEmbarque", Now))
             cmd.Parameters.Add(New SqlParameter("@NumeroFactura", TbNoFactura.Text))
             cmd.Parameters.Add(New SqlParameter("@NombreAgricultor", CbAgricultores.Text))
+            cmd.Parameters.Add(New SqlParameter("@TelefonoAgricultor", TbTelefonoAgricultor.Text))
             cmd.Parameters.Add(New SqlParameter("@Direccion", TbDireccion.Text))
             cmd.Parameters.Add(New SqlParameter("@PesoKgs", TbPeso.Text))
             cmd.Parameters.Add(New SqlParameter("@Tipo", CbSandia.Text))
@@ -134,5 +137,21 @@ Public Class Embarques
         CbAgricultores.ValueMember = "Id"
         CbAgricultores.DisplayMember = "Descripcion"
         CbAgricultores.SelectedValue = 1
+    End Sub
+
+    Private Sub Label16_Click(sender As Object, e As EventArgs) Handles Label16.Click
+
+    End Sub
+
+    Private Sub Label19_Click(sender As Object, e As EventArgs) Handles Label19.Click
+
+    End Sub
+
+    Private Sub Label21_Click(sender As Object, e As EventArgs) Handles Label21.Click
+
+    End Sub
+
+    Private Sub Label25_Click(sender As Object, e As EventArgs) Handles Label25.Click
+
     End Sub
 End Class
