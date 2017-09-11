@@ -28,6 +28,7 @@ Partial Class Embarques
         Me.ConsultarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SairToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GbDatosGenerales = New System.Windows.Forms.GroupBox()
+        Me.Label30 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.TbDireccion = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
@@ -82,6 +83,7 @@ Partial Class Embarques
         Me.TbIdEmbarque = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GbFiltros = New System.Windows.Forms.GroupBox()
+        Me.DgvEmbarques = New System.Windows.Forms.DataGridView()
         Me.BtFiltrar = New System.Windows.Forms.Button()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.CbSandiaFiltro = New System.Windows.Forms.ComboBox()
@@ -89,8 +91,6 @@ Partial Class Embarques
         Me.DtpFechaFin = New System.Windows.Forms.DateTimePicker()
         Me.DtpFechaInicio = New System.Windows.Forms.DateTimePicker()
         Me.Label27 = New System.Windows.Forms.Label()
-        Me.DgvEmbarques = New System.Windows.Forms.DataGridView()
-        Me.Label30 = New System.Windows.Forms.Label()
         Me.MSMenu.SuspendLayout()
         Me.GbDatosGenerales.SuspendLayout()
         Me.GbFiltros.SuspendLayout()
@@ -191,6 +191,15 @@ Partial Class Embarques
         Me.GbDatosGenerales.TabIndex = 1
         Me.GbDatosGenerales.TabStop = False
         Me.GbDatosGenerales.Text = "Datos Generales"
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Location = New System.Drawing.Point(243, 104)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(28, 13)
+        Me.Label30.TabIndex = 53
+        Me.Label30.Text = "Tipo"
         '
         'Label26
         '
@@ -636,6 +645,14 @@ Partial Class Embarques
         Me.GbFiltros.TabStop = False
         Me.GbFiltros.Text = "Filtros"
         '
+        'DgvEmbarques
+        '
+        Me.DgvEmbarques.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DgvEmbarques.Location = New System.Drawing.Point(10, 100)
+        Me.DgvEmbarques.Name = "DgvEmbarques"
+        Me.DgvEmbarques.Size = New System.Drawing.Size(616, 474)
+        Me.DgvEmbarques.TabIndex = 56
+        '
         'BtFiltrar
         '
         Me.BtFiltrar.Location = New System.Drawing.Point(214, 68)
@@ -693,23 +710,6 @@ Partial Class Embarques
         Me.Label27.Size = New System.Drawing.Size(65, 13)
         Me.Label27.TabIndex = 0
         Me.Label27.Text = "Fecha Inicio"
-        '
-        'DgvEmbarques
-        '
-        Me.DgvEmbarques.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvEmbarques.Location = New System.Drawing.Point(10, 100)
-        Me.DgvEmbarques.Name = "DgvEmbarques"
-        Me.DgvEmbarques.Size = New System.Drawing.Size(616, 474)
-        Me.DgvEmbarques.TabIndex = 56
-        '
-        'Label30
-        '
-        Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(243, 104)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(28, 13)
-        Me.Label30.TabIndex = 53
-        Me.Label30.Text = "Tipo"
         '
         'Embarques
         '
