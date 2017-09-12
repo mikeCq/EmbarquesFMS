@@ -1,5 +1,5 @@
 ﻿Imports System.Data.SqlClient
-Imports System.Data.sq
+Imports System.Data.Sql
 Public Class Embarques
     Dim cnn As New SqlConnection(VarGlob.ConexionPrincipal)
     Dim cmd As SqlCommand
@@ -23,6 +23,7 @@ Public Class Embarques
         Close()
     End Sub
     Private Sub Nuevo()
+
         TbIdEmbarque.Text = ""
         TbNoFactura.Text = ""
         CbAgricultores.SelectedValue = -1
@@ -62,7 +63,7 @@ Public Class Embarques
             cmd.Parameters.Add(New SqlParameter("@NombreAgricultor", CbAgricultores.Text))
             cmd.Parameters.Add(New SqlParameter("@TelefonoAgricultor", TbTelefonoAgricultor.Text))
             cmd.Parameters.Add(New SqlParameter("@Direccion", TbDireccion.Text))
-            cmd.Parameters.Add(New SqlParameter("@PesoKgs", TbPeso.Text))
+            cmd.Parameters.Add(New SqlParameter("@PesoKgs", CDbl(TbPeso.Text)))
             cmd.Parameters.Add(New SqlParameter("@Tipo", CbSandia.Text))
             cmd.Parameters.Add(New SqlParameter("@Observacion", TbObservaciones.Text))
             cmd.Parameters.Add(New SqlParameter("@LineaTransporte", TbLineaTransporte.Text))
@@ -79,19 +80,20 @@ Public Class Embarques
             cmd.Parameters.Add(New SqlParameter("@NumeroLicencia", TbNoLicencia.Text))
             cmd.Parameters.Add(New SqlParameter("@Dueno", TbDueno.Text))
             cmd.Parameters.Add(New SqlParameter("@TelefonoDueno", TbTelefonoDueno.Text))
-            cmd.Parameters.Add(New SqlParameter("@PagarFlete", TbFlete.Text))
-            cmd.Parameters.Add(New SqlParameter("@FleteMenos", TbDescuentoFlete.Text))
-            cmd.Parameters.Add(New SqlParameter("@Anticipo", TbAnticipo.Text))
+            cmd.Parameters.Add(New SqlParameter("@PagarFlete", CDbl(TbFlete.Text)))
+            cmd.Parameters.Add(New SqlParameter("@FleteMenos", CDbl(TbDescuentoFlete.Text)))
+            cmd.Parameters.Add(New SqlParameter("@Anticipo", CDbl(TbAnticipo.Text)))
             cmd.Parameters.Add(New SqlParameter("@AgenciaAduanal", TbAgenciaAduanal.Text))
             cmd.Parameters.Add(New SqlParameter("@TelefonoAgencia", TbTelefono.Text))
             cmd.Parameters.Add(New SqlParameter("@CelularAgencia", TbCelular.Text))
+            cmd.Parameters("@IdEmbarque").Direction = ParameterDirection.InputOutput
             cmd.ExecuteNonQuery()
+            TbIdEmbarque.Text = cmd.Parameters("@IdEmbarque").Value
             cnn.Close()
         Catch ex As Exception
             cnn.Close()
             MsgBox(ex.ToString)
         Finally
-            MessageBox.Show("Precio Actualizado!")
         End Try
     End Sub
     Private Sub CargarCombos()
