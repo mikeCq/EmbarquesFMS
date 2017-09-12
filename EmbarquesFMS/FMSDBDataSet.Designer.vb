@@ -25,7 +25,7 @@ Option Explicit On
 Partial Public Class FMSDBDataSet
     Inherits Global.System.Data.DataSet
     
-    Private tableTable As TableDataTable
+    Private tableEmbarques As EmbarquesDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -56,8 +56,8 @@ Partial Public Class FMSDBDataSet
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-            If (Not (ds.Tables("Table")) Is Nothing) Then
-                MyBase.Tables.Add(New TableDataTable(ds.Tables("Table")))
+            If (Not (ds.Tables("Embarques")) Is Nothing) Then
+                MyBase.Tables.Add(New EmbarquesDataTable(ds.Tables("Embarques")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -80,9 +80,9 @@ Partial Public Class FMSDBDataSet
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property Table() As TableDataTable
+    Public ReadOnly Property Embarques() As EmbarquesDataTable
         Get
-            Return Me.tableTable
+            Return Me.tableEmbarques
         End Get
     End Property
     
@@ -153,8 +153,8 @@ Partial Public Class FMSDBDataSet
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
-            If (Not (ds.Tables("Table")) Is Nothing) Then
-                MyBase.Tables.Add(New TableDataTable(ds.Tables("Table")))
+            If (Not (ds.Tables("Embarques")) Is Nothing) Then
+                MyBase.Tables.Add(New EmbarquesDataTable(ds.Tables("Embarques")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -188,10 +188,10 @@ Partial Public Class FMSDBDataSet
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-        Me.tableTable = CType(MyBase.Tables("Table"),TableDataTable)
+        Me.tableEmbarques = CType(MyBase.Tables("Embarques"),EmbarquesDataTable)
         If (initTable = true) Then
-            If (Not (Me.tableTable) Is Nothing) Then
-                Me.tableTable.InitVars
+            If (Not (Me.tableEmbarques) Is Nothing) Then
+                Me.tableEmbarques.InitVars
             End If
         End If
     End Sub
@@ -204,13 +204,13 @@ Partial Public Class FMSDBDataSet
         Me.Namespace = "http://tempuri.org/FMSDBDataSet.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
-        Me.tableTable = New TableDataTable()
-        MyBase.Tables.Add(Me.tableTable)
+        Me.tableEmbarques = New EmbarquesDataTable()
+        MyBase.Tables.Add(Me.tableEmbarques)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Private Function ShouldSerializeTable() As Boolean
+    Private Function ShouldSerializeEmbarques() As Boolean
         Return false
     End Function
     
@@ -273,15 +273,15 @@ Partial Public Class FMSDBDataSet
     End Function
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Delegate Sub TableRowChangeEventHandler(ByVal sender As Object, ByVal e As TableRowChangeEvent)
+    Public Delegate Sub EmbarquesRowChangeEventHandler(ByVal sender As Object, ByVal e As EmbarquesRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class TableDataTable
-        Inherits Global.System.Data.TypedTableBase(Of TableRow)
+    Partial Public Class EmbarquesDataTable
+        Inherits Global.System.Data.TypedTableBase(Of EmbarquesRow)
         
         Private columnIdEmbarque As Global.System.Data.DataColumn
         
@@ -290,6 +290,8 @@ Partial Public Class FMSDBDataSet
         Private columnNumeroFactura As Global.System.Data.DataColumn
         
         Private columnNombreAgricultor As Global.System.Data.DataColumn
+        
+        Private columnTelefonoAgricultor As Global.System.Data.DataColumn
         
         Private columnDireccion As Global.System.Data.DataColumn
         
@@ -343,7 +345,7 @@ Partial Public Class FMSDBDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "Table"
+            Me.TableName = "Embarques"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -403,6 +405,14 @@ Partial Public Class FMSDBDataSet
         Public ReadOnly Property NombreAgricultorColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnNombreAgricultor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TelefonoAgricultorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTelefonoAgricultor
             End Get
         End Property
         
@@ -609,37 +619,37 @@ Partial Public Class FMSDBDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As TableRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As EmbarquesRow
             Get
-                Return CType(Me.Rows(index),TableRow)
+                Return CType(Me.Rows(index),EmbarquesRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event TableRowChanging As TableRowChangeEventHandler
+        Public Event EmbarquesRowChanging As EmbarquesRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event TableRowChanged As TableRowChangeEventHandler
+        Public Event EmbarquesRowChanged As EmbarquesRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event TableRowDeleting As TableRowChangeEventHandler
+        Public Event EmbarquesRowDeleting As EmbarquesRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event TableRowDeleted As TableRowChangeEventHandler
+        Public Event EmbarquesRowDeleted As EmbarquesRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Sub AddTableRow(ByVal row As TableRow)
+        Public Overloads Sub AddEmbarquesRow(ByVal row As EmbarquesRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddTableRow( _
-                    ByVal IdEmbarque As Integer,  _
+        Public Overloads Function AddEmbarquesRow( _
                     ByVal FechaEmbarque As Date,  _
                     ByVal NumeroFactura As String,  _
                     ByVal NombreAgricultor As String,  _
+                    ByVal TelefonoAgricultor As String,  _
                     ByVal Direccion As String,  _
                     ByVal PesoKgs As Decimal,  _
                     ByVal Tipo As String,  _
@@ -649,7 +659,7 @@ Partial Public Class FMSDBDataSet
                     ByVal CamionMarca As String,  _
                     ByVal Color As String,  _
                     ByVal NumeroMotor As String,  _
-                    ByVal ano As Date,  _
+                    ByVal ano As String,  _
                     ByVal NumeroSerie As String,  _
                     ByVal PlacasTractor As String,  _
                     ByVal PlacasJaula As String,  _
@@ -663,24 +673,24 @@ Partial Public Class FMSDBDataSet
                     ByVal Anticipo As Decimal,  _
                     ByVal AgenciaAduanal As String,  _
                     ByVal TelefonoAgencia As String,  _
-                    ByVal CelularAgencia As String) As TableRow
-            Dim rowTableRow As TableRow = CType(Me.NewRow,TableRow)
-            Dim columnValuesArray() As Object = New Object() {IdEmbarque, FechaEmbarque, NumeroFactura, NombreAgricultor, Direccion, PesoKgs, Tipo, Observacion, LineaTransporte, NumeroGuia, CamionMarca, Color, NumeroMotor, ano, NumeroSerie, PlacasTractor, PlacasJaula, Operador, Telefono, NumeroLicencia, Dueno, TelefonoDueno, PagarFlete, FleteMenos, Anticipo, AgenciaAduanal, TelefonoAgencia, CelularAgencia}
-            rowTableRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowTableRow)
-            Return rowTableRow
+                    ByVal CelularAgencia As String) As EmbarquesRow
+            Dim rowEmbarquesRow As EmbarquesRow = CType(Me.NewRow,EmbarquesRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, FechaEmbarque, NumeroFactura, NombreAgricultor, TelefonoAgricultor, Direccion, PesoKgs, Tipo, Observacion, LineaTransporte, NumeroGuia, CamionMarca, Color, NumeroMotor, ano, NumeroSerie, PlacasTractor, PlacasJaula, Operador, Telefono, NumeroLicencia, Dueno, TelefonoDueno, PagarFlete, FleteMenos, Anticipo, AgenciaAduanal, TelefonoAgencia, CelularAgencia}
+            rowEmbarquesRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowEmbarquesRow)
+            Return rowEmbarquesRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function FindByIdEmbarque(ByVal IdEmbarque As Integer) As TableRow
-            Return CType(Me.Rows.Find(New Object() {IdEmbarque}),TableRow)
+        Public Function FindByIdEmbarque(ByVal IdEmbarque As Integer) As EmbarquesRow
+            Return CType(Me.Rows.Find(New Object() {IdEmbarque}),EmbarquesRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As TableDataTable = CType(MyBase.Clone,TableDataTable)
+            Dim cln As EmbarquesDataTable = CType(MyBase.Clone,EmbarquesDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -688,7 +698,7 @@ Partial Public Class FMSDBDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New TableDataTable()
+            Return New EmbarquesDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -698,6 +708,7 @@ Partial Public Class FMSDBDataSet
             Me.columnFechaEmbarque = MyBase.Columns("FechaEmbarque")
             Me.columnNumeroFactura = MyBase.Columns("NumeroFactura")
             Me.columnNombreAgricultor = MyBase.Columns("NombreAgricultor")
+            Me.columnTelefonoAgricultor = MyBase.Columns("TelefonoAgricultor")
             Me.columnDireccion = MyBase.Columns("Direccion")
             Me.columnPesoKgs = MyBase.Columns("PesoKgs")
             Me.columnTipo = MyBase.Columns("Tipo")
@@ -735,6 +746,8 @@ Partial Public Class FMSDBDataSet
             MyBase.Columns.Add(Me.columnNumeroFactura)
             Me.columnNombreAgricultor = New Global.System.Data.DataColumn("NombreAgricultor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNombreAgricultor)
+            Me.columnTelefonoAgricultor = New Global.System.Data.DataColumn("TelefonoAgricultor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTelefonoAgricultor)
             Me.columnDireccion = New Global.System.Data.DataColumn("Direccion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDireccion)
             Me.columnPesoKgs = New Global.System.Data.DataColumn("PesoKgs", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
@@ -753,7 +766,7 @@ Partial Public Class FMSDBDataSet
             MyBase.Columns.Add(Me.columnColor)
             Me.columnNumeroMotor = New Global.System.Data.DataColumn("NumeroMotor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNumeroMotor)
-            Me.columnano = New Global.System.Data.DataColumn("ano", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnano = New Global.System.Data.DataColumn("ano", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnano)
             Me.columnNumeroSerie = New Global.System.Data.DataColumn("NumeroSerie", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNumeroSerie)
@@ -784,10 +797,15 @@ Partial Public Class FMSDBDataSet
             Me.columnCelularAgencia = New Global.System.Data.DataColumn("CelularAgencia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCelularAgencia)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnIdEmbarque}, true))
+            Me.columnIdEmbarque.AutoIncrement = true
+            Me.columnIdEmbarque.AutoIncrementSeed = -1
+            Me.columnIdEmbarque.AutoIncrementStep = -1
             Me.columnIdEmbarque.AllowDBNull = false
+            Me.columnIdEmbarque.ReadOnly = true
             Me.columnIdEmbarque.Unique = true
             Me.columnNumeroFactura.MaxLength = 10
             Me.columnNombreAgricultor.MaxLength = 100
+            Me.columnTelefonoAgricultor.MaxLength = 15
             Me.columnDireccion.MaxLength = 100
             Me.columnTipo.MaxLength = 25
             Me.columnObservacion.MaxLength = 500
@@ -796,6 +814,7 @@ Partial Public Class FMSDBDataSet
             Me.columnCamionMarca.MaxLength = 100
             Me.columnColor.MaxLength = 20
             Me.columnNumeroMotor.MaxLength = 20
+            Me.columnano.MaxLength = 4
             Me.columnNumeroSerie.MaxLength = 30
             Me.columnPlacasTractor.MaxLength = 20
             Me.columnPlacasJaula.MaxLength = 20
@@ -807,39 +826,32 @@ Partial Public Class FMSDBDataSet
             Me.columnAgenciaAduanal.MaxLength = 100
             Me.columnTelefonoAgencia.MaxLength = 15
             Me.columnCelularAgencia.MaxLength = 15
-            Me.ExtendedProperties.Add("Generator_RowClassName", "TableRow")
-            Me.ExtendedProperties.Add("Generator_RowEvArgName", "TableRowChangeEvent")
-            Me.ExtendedProperties.Add("Generator_RowEvHandlerName", "TableRowChangeEventHandler")
-            Me.ExtendedProperties.Add("Generator_TableClassName", "TableDataTable")
-            Me.ExtendedProperties.Add("Generator_TablePropName", "Table")
-            Me.ExtendedProperties.Add("Generator_TableVarName", "tableTable")
-            Me.ExtendedProperties.Add("Generator_UserTableName", "Table")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function NewTableRow() As TableRow
-            Return CType(Me.NewRow,TableRow)
+        Public Function NewEmbarquesRow() As EmbarquesRow
+            Return CType(Me.NewRow,EmbarquesRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New TableRow(builder)
+            Return New EmbarquesRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(TableRow)
+            Return GetType(EmbarquesRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.TableRowChangedEvent) Is Nothing) Then
-                RaiseEvent TableRowChanged(Me, New TableRowChangeEvent(CType(e.Row,TableRow), e.Action))
+            If (Not (Me.EmbarquesRowChangedEvent) Is Nothing) Then
+                RaiseEvent EmbarquesRowChanged(Me, New EmbarquesRowChangeEvent(CType(e.Row,EmbarquesRow), e.Action))
             End If
         End Sub
         
@@ -847,8 +859,8 @@ Partial Public Class FMSDBDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.TableRowChangingEvent) Is Nothing) Then
-                RaiseEvent TableRowChanging(Me, New TableRowChangeEvent(CType(e.Row,TableRow), e.Action))
+            If (Not (Me.EmbarquesRowChangingEvent) Is Nothing) Then
+                RaiseEvent EmbarquesRowChanging(Me, New EmbarquesRowChangeEvent(CType(e.Row,EmbarquesRow), e.Action))
             End If
         End Sub
         
@@ -856,8 +868,8 @@ Partial Public Class FMSDBDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.TableRowDeletedEvent) Is Nothing) Then
-                RaiseEvent TableRowDeleted(Me, New TableRowChangeEvent(CType(e.Row,TableRow), e.Action))
+            If (Not (Me.EmbarquesRowDeletedEvent) Is Nothing) Then
+                RaiseEvent EmbarquesRowDeleted(Me, New EmbarquesRowChangeEvent(CType(e.Row,EmbarquesRow), e.Action))
             End If
         End Sub
         
@@ -865,14 +877,14 @@ Partial Public Class FMSDBDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.TableRowDeletingEvent) Is Nothing) Then
-                RaiseEvent TableRowDeleting(Me, New TableRowChangeEvent(CType(e.Row,TableRow), e.Action))
+            If (Not (Me.EmbarquesRowDeletingEvent) Is Nothing) Then
+                RaiseEvent EmbarquesRowDeleting(Me, New EmbarquesRowChangeEvent(CType(e.Row,EmbarquesRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub RemoveTableRow(ByVal row As TableRow)
+        Public Sub RemoveEmbarquesRow(ByVal row As EmbarquesRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -899,7 +911,7 @@ Partial Public Class FMSDBDataSet
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "TableDataTable"
+            attribute2.FixedValue = "EmbarquesDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -946,26 +958,26 @@ Partial Public Class FMSDBDataSet
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class TableRow
+    Partial Public Class EmbarquesRow
         Inherits Global.System.Data.DataRow
         
-        Private tableTable As TableDataTable
+        Private tableEmbarques As EmbarquesDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableTable = CType(Me.Table,TableDataTable)
+            Me.tableEmbarques = CType(Me.Table,EmbarquesDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property IdEmbarque() As Integer
             Get
-                Return CType(Me(Me.tableTable.IdEmbarqueColumn),Integer)
+                Return CType(Me(Me.tableEmbarques.IdEmbarqueColumn),Integer)
             End Get
             Set
-                Me(Me.tableTable.IdEmbarqueColumn) = value
+                Me(Me.tableEmbarques.IdEmbarqueColumn) = value
             End Set
         End Property
         
@@ -974,13 +986,13 @@ Partial Public Class FMSDBDataSet
         Public Property FechaEmbarque() As Date
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.FechaEmbarqueColumn),Date)
+                    Return CType(Me(Me.tableEmbarques.FechaEmbarqueColumn),Date)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaEmbarque' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaEmbarque' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.FechaEmbarqueColumn) = value
+                Me(Me.tableEmbarques.FechaEmbarqueColumn) = value
             End Set
         End Property
         
@@ -989,13 +1001,13 @@ Partial Public Class FMSDBDataSet
         Public Property NumeroFactura() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.NumeroFacturaColumn),String)
+                    Return CType(Me(Me.tableEmbarques.NumeroFacturaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NumeroFactura' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NumeroFactura' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.NumeroFacturaColumn) = value
+                Me(Me.tableEmbarques.NumeroFacturaColumn) = value
             End Set
         End Property
         
@@ -1004,13 +1016,28 @@ Partial Public Class FMSDBDataSet
         Public Property NombreAgricultor() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.NombreAgricultorColumn),String)
+                    Return CType(Me(Me.tableEmbarques.NombreAgricultorColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NombreAgricultor' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NombreAgricultor' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.NombreAgricultorColumn) = value
+                Me(Me.tableEmbarques.NombreAgricultorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property TelefonoAgricultor() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmbarques.TelefonoAgricultorColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TelefonoAgricultor' de la tabla 'Embarques' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmbarques.TelefonoAgricultorColumn) = value
             End Set
         End Property
         
@@ -1019,13 +1046,13 @@ Partial Public Class FMSDBDataSet
         Public Property Direccion() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.DireccionColumn),String)
+                    Return CType(Me(Me.tableEmbarques.DireccionColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Direccion' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Direccion' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.DireccionColumn) = value
+                Me(Me.tableEmbarques.DireccionColumn) = value
             End Set
         End Property
         
@@ -1034,13 +1061,13 @@ Partial Public Class FMSDBDataSet
         Public Property PesoKgs() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.PesoKgsColumn),Decimal)
+                    Return CType(Me(Me.tableEmbarques.PesoKgsColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PesoKgs' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PesoKgs' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.PesoKgsColumn) = value
+                Me(Me.tableEmbarques.PesoKgsColumn) = value
             End Set
         End Property
         
@@ -1049,13 +1076,13 @@ Partial Public Class FMSDBDataSet
         Public Property Tipo() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.TipoColumn),String)
+                    Return CType(Me(Me.tableEmbarques.TipoColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Tipo' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Tipo' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.TipoColumn) = value
+                Me(Me.tableEmbarques.TipoColumn) = value
             End Set
         End Property
         
@@ -1064,13 +1091,13 @@ Partial Public Class FMSDBDataSet
         Public Property Observacion() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.ObservacionColumn),String)
+                    Return CType(Me(Me.tableEmbarques.ObservacionColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Observacion' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Observacion' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.ObservacionColumn) = value
+                Me(Me.tableEmbarques.ObservacionColumn) = value
             End Set
         End Property
         
@@ -1079,13 +1106,13 @@ Partial Public Class FMSDBDataSet
         Public Property LineaTransporte() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.LineaTransporteColumn),String)
+                    Return CType(Me(Me.tableEmbarques.LineaTransporteColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'LineaTransporte' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'LineaTransporte' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.LineaTransporteColumn) = value
+                Me(Me.tableEmbarques.LineaTransporteColumn) = value
             End Set
         End Property
         
@@ -1094,13 +1121,13 @@ Partial Public Class FMSDBDataSet
         Public Property NumeroGuia() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.NumeroGuiaColumn),String)
+                    Return CType(Me(Me.tableEmbarques.NumeroGuiaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NumeroGuia' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NumeroGuia' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.NumeroGuiaColumn) = value
+                Me(Me.tableEmbarques.NumeroGuiaColumn) = value
             End Set
         End Property
         
@@ -1109,13 +1136,13 @@ Partial Public Class FMSDBDataSet
         Public Property CamionMarca() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.CamionMarcaColumn),String)
+                    Return CType(Me(Me.tableEmbarques.CamionMarcaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CamionMarca' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CamionMarca' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.CamionMarcaColumn) = value
+                Me(Me.tableEmbarques.CamionMarcaColumn) = value
             End Set
         End Property
         
@@ -1124,13 +1151,13 @@ Partial Public Class FMSDBDataSet
         Public Property Color() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.ColorColumn),String)
+                    Return CType(Me(Me.tableEmbarques.ColorColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Color' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Color' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.ColorColumn) = value
+                Me(Me.tableEmbarques.ColorColumn) = value
             End Set
         End Property
         
@@ -1139,28 +1166,28 @@ Partial Public Class FMSDBDataSet
         Public Property NumeroMotor() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.NumeroMotorColumn),String)
+                    Return CType(Me(Me.tableEmbarques.NumeroMotorColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NumeroMotor' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NumeroMotor' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.NumeroMotorColumn) = value
+                Me(Me.tableEmbarques.NumeroMotorColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property ano() As Date
+        Public Property ano() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.anoColumn),Date)
+                    Return CType(Me(Me.tableEmbarques.anoColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ano' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ano' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.anoColumn) = value
+                Me(Me.tableEmbarques.anoColumn) = value
             End Set
         End Property
         
@@ -1169,13 +1196,13 @@ Partial Public Class FMSDBDataSet
         Public Property NumeroSerie() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.NumeroSerieColumn),String)
+                    Return CType(Me(Me.tableEmbarques.NumeroSerieColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NumeroSerie' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NumeroSerie' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.NumeroSerieColumn) = value
+                Me(Me.tableEmbarques.NumeroSerieColumn) = value
             End Set
         End Property
         
@@ -1184,13 +1211,13 @@ Partial Public Class FMSDBDataSet
         Public Property PlacasTractor() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.PlacasTractorColumn),String)
+                    Return CType(Me(Me.tableEmbarques.PlacasTractorColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PlacasTractor' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PlacasTractor' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.PlacasTractorColumn) = value
+                Me(Me.tableEmbarques.PlacasTractorColumn) = value
             End Set
         End Property
         
@@ -1199,13 +1226,13 @@ Partial Public Class FMSDBDataSet
         Public Property PlacasJaula() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.PlacasJaulaColumn),String)
+                    Return CType(Me(Me.tableEmbarques.PlacasJaulaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PlacasJaula' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PlacasJaula' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.PlacasJaulaColumn) = value
+                Me(Me.tableEmbarques.PlacasJaulaColumn) = value
             End Set
         End Property
         
@@ -1214,13 +1241,13 @@ Partial Public Class FMSDBDataSet
         Public Property Operador() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.OperadorColumn),String)
+                    Return CType(Me(Me.tableEmbarques.OperadorColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Operador' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Operador' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.OperadorColumn) = value
+                Me(Me.tableEmbarques.OperadorColumn) = value
             End Set
         End Property
         
@@ -1229,13 +1256,13 @@ Partial Public Class FMSDBDataSet
         Public Property Telefono() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.TelefonoColumn),String)
+                    Return CType(Me(Me.tableEmbarques.TelefonoColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Telefono' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Telefono' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.TelefonoColumn) = value
+                Me(Me.tableEmbarques.TelefonoColumn) = value
             End Set
         End Property
         
@@ -1244,13 +1271,13 @@ Partial Public Class FMSDBDataSet
         Public Property NumeroLicencia() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.NumeroLicenciaColumn),String)
+                    Return CType(Me(Me.tableEmbarques.NumeroLicenciaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NumeroLicencia' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NumeroLicencia' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.NumeroLicenciaColumn) = value
+                Me(Me.tableEmbarques.NumeroLicenciaColumn) = value
             End Set
         End Property
         
@@ -1259,13 +1286,13 @@ Partial Public Class FMSDBDataSet
         Public Property Dueno() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.DuenoColumn),String)
+                    Return CType(Me(Me.tableEmbarques.DuenoColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Dueno' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Dueno' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.DuenoColumn) = value
+                Me(Me.tableEmbarques.DuenoColumn) = value
             End Set
         End Property
         
@@ -1274,13 +1301,13 @@ Partial Public Class FMSDBDataSet
         Public Property TelefonoDueno() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.TelefonoDuenoColumn),String)
+                    Return CType(Me(Me.tableEmbarques.TelefonoDuenoColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TelefonoDueno' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TelefonoDueno' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.TelefonoDuenoColumn) = value
+                Me(Me.tableEmbarques.TelefonoDuenoColumn) = value
             End Set
         End Property
         
@@ -1289,13 +1316,13 @@ Partial Public Class FMSDBDataSet
         Public Property PagarFlete() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.PagarFleteColumn),Decimal)
+                    Return CType(Me(Me.tableEmbarques.PagarFleteColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PagarFlete' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PagarFlete' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.PagarFleteColumn) = value
+                Me(Me.tableEmbarques.PagarFleteColumn) = value
             End Set
         End Property
         
@@ -1304,13 +1331,13 @@ Partial Public Class FMSDBDataSet
         Public Property FleteMenos() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.FleteMenosColumn),Decimal)
+                    Return CType(Me(Me.tableEmbarques.FleteMenosColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FleteMenos' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FleteMenos' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.FleteMenosColumn) = value
+                Me(Me.tableEmbarques.FleteMenosColumn) = value
             End Set
         End Property
         
@@ -1319,13 +1346,13 @@ Partial Public Class FMSDBDataSet
         Public Property Anticipo() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.AnticipoColumn),Decimal)
+                    Return CType(Me(Me.tableEmbarques.AnticipoColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Anticipo' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Anticipo' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.AnticipoColumn) = value
+                Me(Me.tableEmbarques.AnticipoColumn) = value
             End Set
         End Property
         
@@ -1334,13 +1361,13 @@ Partial Public Class FMSDBDataSet
         Public Property AgenciaAduanal() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.AgenciaAduanalColumn),String)
+                    Return CType(Me(Me.tableEmbarques.AgenciaAduanalColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'AgenciaAduanal' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'AgenciaAduanal' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.AgenciaAduanalColumn) = value
+                Me(Me.tableEmbarques.AgenciaAduanalColumn) = value
             End Set
         End Property
         
@@ -1349,13 +1376,13 @@ Partial Public Class FMSDBDataSet
         Public Property TelefonoAgencia() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.TelefonoAgenciaColumn),String)
+                    Return CType(Me(Me.tableEmbarques.TelefonoAgenciaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TelefonoAgencia' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TelefonoAgencia' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.TelefonoAgenciaColumn) = value
+                Me(Me.tableEmbarques.TelefonoAgenciaColumn) = value
             End Set
         End Property
         
@@ -1364,338 +1391,350 @@ Partial Public Class FMSDBDataSet
         Public Property CelularAgencia() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTable.CelularAgenciaColumn),String)
+                    Return CType(Me(Me.tableEmbarques.CelularAgenciaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CelularAgencia' de la tabla 'Table' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CelularAgencia' de la tabla 'Embarques' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTable.CelularAgenciaColumn) = value
+                Me(Me.tableEmbarques.CelularAgenciaColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsFechaEmbarqueNull() As Boolean
-            Return Me.IsNull(Me.tableTable.FechaEmbarqueColumn)
+            Return Me.IsNull(Me.tableEmbarques.FechaEmbarqueColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetFechaEmbarqueNull()
-            Me(Me.tableTable.FechaEmbarqueColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.FechaEmbarqueColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsNumeroFacturaNull() As Boolean
-            Return Me.IsNull(Me.tableTable.NumeroFacturaColumn)
+            Return Me.IsNull(Me.tableEmbarques.NumeroFacturaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetNumeroFacturaNull()
-            Me(Me.tableTable.NumeroFacturaColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.NumeroFacturaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsNombreAgricultorNull() As Boolean
-            Return Me.IsNull(Me.tableTable.NombreAgricultorColumn)
+            Return Me.IsNull(Me.tableEmbarques.NombreAgricultorColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetNombreAgricultorNull()
-            Me(Me.tableTable.NombreAgricultorColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.NombreAgricultorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsTelefonoAgricultorNull() As Boolean
+            Return Me.IsNull(Me.tableEmbarques.TelefonoAgricultorColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetTelefonoAgricultorNull()
+            Me(Me.tableEmbarques.TelefonoAgricultorColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsDireccionNull() As Boolean
-            Return Me.IsNull(Me.tableTable.DireccionColumn)
+            Return Me.IsNull(Me.tableEmbarques.DireccionColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetDireccionNull()
-            Me(Me.tableTable.DireccionColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.DireccionColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsPesoKgsNull() As Boolean
-            Return Me.IsNull(Me.tableTable.PesoKgsColumn)
+            Return Me.IsNull(Me.tableEmbarques.PesoKgsColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetPesoKgsNull()
-            Me(Me.tableTable.PesoKgsColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.PesoKgsColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsTipoNull() As Boolean
-            Return Me.IsNull(Me.tableTable.TipoColumn)
+            Return Me.IsNull(Me.tableEmbarques.TipoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetTipoNull()
-            Me(Me.tableTable.TipoColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.TipoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsObservacionNull() As Boolean
-            Return Me.IsNull(Me.tableTable.ObservacionColumn)
+            Return Me.IsNull(Me.tableEmbarques.ObservacionColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetObservacionNull()
-            Me(Me.tableTable.ObservacionColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.ObservacionColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsLineaTransporteNull() As Boolean
-            Return Me.IsNull(Me.tableTable.LineaTransporteColumn)
+            Return Me.IsNull(Me.tableEmbarques.LineaTransporteColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetLineaTransporteNull()
-            Me(Me.tableTable.LineaTransporteColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.LineaTransporteColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsNumeroGuiaNull() As Boolean
-            Return Me.IsNull(Me.tableTable.NumeroGuiaColumn)
+            Return Me.IsNull(Me.tableEmbarques.NumeroGuiaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetNumeroGuiaNull()
-            Me(Me.tableTable.NumeroGuiaColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.NumeroGuiaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsCamionMarcaNull() As Boolean
-            Return Me.IsNull(Me.tableTable.CamionMarcaColumn)
+            Return Me.IsNull(Me.tableEmbarques.CamionMarcaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetCamionMarcaNull()
-            Me(Me.tableTable.CamionMarcaColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.CamionMarcaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsColorNull() As Boolean
-            Return Me.IsNull(Me.tableTable.ColorColumn)
+            Return Me.IsNull(Me.tableEmbarques.ColorColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetColorNull()
-            Me(Me.tableTable.ColorColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.ColorColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsNumeroMotorNull() As Boolean
-            Return Me.IsNull(Me.tableTable.NumeroMotorColumn)
+            Return Me.IsNull(Me.tableEmbarques.NumeroMotorColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetNumeroMotorNull()
-            Me(Me.tableTable.NumeroMotorColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.NumeroMotorColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsanoNull() As Boolean
-            Return Me.IsNull(Me.tableTable.anoColumn)
+            Return Me.IsNull(Me.tableEmbarques.anoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetanoNull()
-            Me(Me.tableTable.anoColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.anoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsNumeroSerieNull() As Boolean
-            Return Me.IsNull(Me.tableTable.NumeroSerieColumn)
+            Return Me.IsNull(Me.tableEmbarques.NumeroSerieColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetNumeroSerieNull()
-            Me(Me.tableTable.NumeroSerieColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.NumeroSerieColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsPlacasTractorNull() As Boolean
-            Return Me.IsNull(Me.tableTable.PlacasTractorColumn)
+            Return Me.IsNull(Me.tableEmbarques.PlacasTractorColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetPlacasTractorNull()
-            Me(Me.tableTable.PlacasTractorColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.PlacasTractorColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsPlacasJaulaNull() As Boolean
-            Return Me.IsNull(Me.tableTable.PlacasJaulaColumn)
+            Return Me.IsNull(Me.tableEmbarques.PlacasJaulaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetPlacasJaulaNull()
-            Me(Me.tableTable.PlacasJaulaColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.PlacasJaulaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsOperadorNull() As Boolean
-            Return Me.IsNull(Me.tableTable.OperadorColumn)
+            Return Me.IsNull(Me.tableEmbarques.OperadorColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetOperadorNull()
-            Me(Me.tableTable.OperadorColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.OperadorColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsTelefonoNull() As Boolean
-            Return Me.IsNull(Me.tableTable.TelefonoColumn)
+            Return Me.IsNull(Me.tableEmbarques.TelefonoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetTelefonoNull()
-            Me(Me.tableTable.TelefonoColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.TelefonoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsNumeroLicenciaNull() As Boolean
-            Return Me.IsNull(Me.tableTable.NumeroLicenciaColumn)
+            Return Me.IsNull(Me.tableEmbarques.NumeroLicenciaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetNumeroLicenciaNull()
-            Me(Me.tableTable.NumeroLicenciaColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.NumeroLicenciaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsDuenoNull() As Boolean
-            Return Me.IsNull(Me.tableTable.DuenoColumn)
+            Return Me.IsNull(Me.tableEmbarques.DuenoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetDuenoNull()
-            Me(Me.tableTable.DuenoColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.DuenoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsTelefonoDuenoNull() As Boolean
-            Return Me.IsNull(Me.tableTable.TelefonoDuenoColumn)
+            Return Me.IsNull(Me.tableEmbarques.TelefonoDuenoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetTelefonoDuenoNull()
-            Me(Me.tableTable.TelefonoDuenoColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.TelefonoDuenoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsPagarFleteNull() As Boolean
-            Return Me.IsNull(Me.tableTable.PagarFleteColumn)
+            Return Me.IsNull(Me.tableEmbarques.PagarFleteColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetPagarFleteNull()
-            Me(Me.tableTable.PagarFleteColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.PagarFleteColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsFleteMenosNull() As Boolean
-            Return Me.IsNull(Me.tableTable.FleteMenosColumn)
+            Return Me.IsNull(Me.tableEmbarques.FleteMenosColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetFleteMenosNull()
-            Me(Me.tableTable.FleteMenosColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.FleteMenosColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsAnticipoNull() As Boolean
-            Return Me.IsNull(Me.tableTable.AnticipoColumn)
+            Return Me.IsNull(Me.tableEmbarques.AnticipoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetAnticipoNull()
-            Me(Me.tableTable.AnticipoColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.AnticipoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsAgenciaAduanalNull() As Boolean
-            Return Me.IsNull(Me.tableTable.AgenciaAduanalColumn)
+            Return Me.IsNull(Me.tableEmbarques.AgenciaAduanalColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetAgenciaAduanalNull()
-            Me(Me.tableTable.AgenciaAduanalColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.AgenciaAduanalColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsTelefonoAgenciaNull() As Boolean
-            Return Me.IsNull(Me.tableTable.TelefonoAgenciaColumn)
+            Return Me.IsNull(Me.tableEmbarques.TelefonoAgenciaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetTelefonoAgenciaNull()
-            Me(Me.tableTable.TelefonoAgenciaColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.TelefonoAgenciaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsCelularAgenciaNull() As Boolean
-            Return Me.IsNull(Me.tableTable.CelularAgenciaColumn)
+            Return Me.IsNull(Me.tableEmbarques.CelularAgenciaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetCelularAgenciaNull()
-            Me(Me.tableTable.CelularAgenciaColumn) = Global.System.Convert.DBNull
+            Me(Me.tableEmbarques.CelularAgenciaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -1703,16 +1742,16 @@ Partial Public Class FMSDBDataSet
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Class TableRowChangeEvent
+    Public Class EmbarquesRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As TableRow
+        Private eventRow As EmbarquesRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New(ByVal row As TableRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As EmbarquesRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -1720,7 +1759,7 @@ Partial Public Class FMSDBDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Row() As TableRow
+        Public ReadOnly Property Row() As EmbarquesRow
             Get
                 Return Me.eventRow
             End Get
@@ -1747,7 +1786,7 @@ Namespace FMSDBDataSetTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class TableTableAdapter
+    Partial Public Class EmbarquesTableAdapter
         Inherits Global.System.ComponentModel.Component
         
         Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
@@ -1864,11 +1903,12 @@ Namespace FMSDBDataSetTableAdapters
             Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "Table"
+            tableMapping.DataSetTable = "Embarques"
             tableMapping.ColumnMappings.Add("IdEmbarque", "IdEmbarque")
             tableMapping.ColumnMappings.Add("FechaEmbarque", "FechaEmbarque")
             tableMapping.ColumnMappings.Add("NumeroFactura", "NumeroFactura")
             tableMapping.ColumnMappings.Add("NombreAgricultor", "NombreAgricultor")
+            tableMapping.ColumnMappings.Add("TelefonoAgricultor", "TelefonoAgricultor")
             tableMapping.ColumnMappings.Add("Direccion", "Direccion")
             tableMapping.ColumnMappings.Add("PesoKgs", "PesoKgs")
             tableMapping.ColumnMappings.Add("Tipo", "Tipo")
@@ -1896,41 +1936,42 @@ Namespace FMSDBDataSetTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Table] WHERE (([IdEmbarque] = @Original_IdEmbarque) AND ((@IsN"& _ 
-                "ull_FechaEmbarque = 1 AND [FechaEmbarque] IS NULL) OR ([FechaEmbarque] = @Origin"& _ 
-                "al_FechaEmbarque)) AND ((@IsNull_NumeroFactura = 1 AND [NumeroFactura] IS NULL) "& _ 
-                "OR ([NumeroFactura] = @Original_NumeroFactura)) AND ((@IsNull_NombreAgricultor ="& _ 
-                " 1 AND [NombreAgricultor] IS NULL) OR ([NombreAgricultor] = @Original_NombreAgri"& _ 
-                "cultor)) AND ((@IsNull_Direccion = 1 AND [Direccion] IS NULL) OR ([Direccion] = "& _ 
-                "@Original_Direccion)) AND ((@IsNull_PesoKgs = 1 AND [PesoKgs] IS NULL) OR ([Peso"& _ 
-                "Kgs] = @Original_PesoKgs)) AND ((@IsNull_Tipo = 1 AND [Tipo] IS NULL) OR ([Tipo]"& _ 
-                " = @Original_Tipo)) AND ((@IsNull_Observacion = 1 AND [Observacion] IS NULL) OR "& _ 
-                "([Observacion] = @Original_Observacion)) AND ((@IsNull_LineaTransporte = 1 AND ["& _ 
-                "LineaTransporte] IS NULL) OR ([LineaTransporte] = @Original_LineaTransporte)) AN"& _ 
-                "D ((@IsNull_NumeroGuia = 1 AND [NumeroGuia] IS NULL) OR ([NumeroGuia] = @Origina"& _ 
-                "l_NumeroGuia)) AND ((@IsNull_CamionMarca = 1 AND [CamionMarca] IS NULL) OR ([Cam"& _ 
-                "ionMarca] = @Original_CamionMarca)) AND ((@IsNull_Color = 1 AND [Color] IS NULL)"& _ 
-                " OR ([Color] = @Original_Color)) AND ((@IsNull_NumeroMotor = 1 AND [NumeroMotor]"& _ 
-                " IS NULL) OR ([NumeroMotor] = @Original_NumeroMotor)) AND ((@IsNull_ano = 1 AND "& _ 
-                "[ano] IS NULL) OR ([ano] = @Original_ano)) AND ((@IsNull_NumeroSerie = 1 AND [Nu"& _ 
-                "meroSerie] IS NULL) OR ([NumeroSerie] = @Original_NumeroSerie)) AND ((@IsNull_Pl"& _ 
-                "acasTractor = 1 AND [PlacasTractor] IS NULL) OR ([PlacasTractor] = @Original_Pla"& _ 
-                "casTractor)) AND ((@IsNull_PlacasJaula = 1 AND [PlacasJaula] IS NULL) OR ([Placa"& _ 
-                "sJaula] = @Original_PlacasJaula)) AND ((@IsNull_Operador = 1 AND [Operador] IS N"& _ 
-                "ULL) OR ([Operador] = @Original_Operador)) AND ((@IsNull_Telefono = 1 AND [Telef"& _ 
-                "ono] IS NULL) OR ([Telefono] = @Original_Telefono)) AND ((@IsNull_NumeroLicencia"& _ 
-                " = 1 AND [NumeroLicencia] IS NULL) OR ([NumeroLicencia] = @Original_NumeroLicenc"& _ 
-                "ia)) AND ((@IsNull_Dueno = 1 AND [Dueno] IS NULL) OR ([Dueno] = @Original_Dueno)"& _ 
-                ") AND ((@IsNull_TelefonoDueno = 1 AND [TelefonoDueno] IS NULL) OR ([TelefonoDuen"& _ 
-                "o] = @Original_TelefonoDueno)) AND ((@IsNull_PagarFlete = 1 AND [PagarFlete] IS "& _ 
-                "NULL) OR ([PagarFlete] = @Original_PagarFlete)) AND ((@IsNull_FleteMenos = 1 AND"& _ 
-                " [FleteMenos] IS NULL) OR ([FleteMenos] = @Original_FleteMenos)) AND ((@IsNull_A"& _ 
-                "nticipo = 1 AND [Anticipo] IS NULL) OR ([Anticipo] = @Original_Anticipo)) AND (("& _ 
-                "@IsNull_AgenciaAduanal = 1 AND [AgenciaAduanal] IS NULL) OR ([AgenciaAduanal] = "& _ 
-                "@Original_AgenciaAduanal)) AND ((@IsNull_TelefonoAgencia = 1 AND [TelefonoAgenci"& _ 
-                "a] IS NULL) OR ([TelefonoAgencia] = @Original_TelefonoAgencia)) AND ((@IsNull_Ce"& _ 
-                "lularAgencia = 1 AND [CelularAgencia] IS NULL) OR ([CelularAgencia] = @Original_"& _ 
-                "CelularAgencia)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Embarques] WHERE (([IdEmbarque] = @Original_IdEmbarque) AND (("& _ 
+                "@IsNull_FechaEmbarque = 1 AND [FechaEmbarque] IS NULL) OR ([FechaEmbarque] = @Or"& _ 
+                "iginal_FechaEmbarque)) AND ((@IsNull_NumeroFactura = 1 AND [NumeroFactura] IS NU"& _ 
+                "LL) OR ([NumeroFactura] = @Original_NumeroFactura)) AND ((@IsNull_NombreAgricult"& _ 
+                "or = 1 AND [NombreAgricultor] IS NULL) OR ([NombreAgricultor] = @Original_Nombre"& _ 
+                "Agricultor)) AND ((@IsNull_TelefonoAgricultor = 1 AND [TelefonoAgricultor] IS NU"& _ 
+                "LL) OR ([TelefonoAgricultor] = @Original_TelefonoAgricultor)) AND ((@IsNull_Dire"& _ 
+                "ccion = 1 AND [Direccion] IS NULL) OR ([Direccion] = @Original_Direccion)) AND ("& _ 
+                "(@IsNull_PesoKgs = 1 AND [PesoKgs] IS NULL) OR ([PesoKgs] = @Original_PesoKgs)) "& _ 
+                "AND ((@IsNull_Tipo = 1 AND [Tipo] IS NULL) OR ([Tipo] = @Original_Tipo)) AND ((@"& _ 
+                "IsNull_Observacion = 1 AND [Observacion] IS NULL) OR ([Observacion] = @Original_"& _ 
+                "Observacion)) AND ((@IsNull_LineaTransporte = 1 AND [LineaTransporte] IS NULL) O"& _ 
+                "R ([LineaTransporte] = @Original_LineaTransporte)) AND ((@IsNull_NumeroGuia = 1 "& _ 
+                "AND [NumeroGuia] IS NULL) OR ([NumeroGuia] = @Original_NumeroGuia)) AND ((@IsNul"& _ 
+                "l_CamionMarca = 1 AND [CamionMarca] IS NULL) OR ([CamionMarca] = @Original_Camio"& _ 
+                "nMarca)) AND ((@IsNull_Color = 1 AND [Color] IS NULL) OR ([Color] = @Original_Co"& _ 
+                "lor)) AND ((@IsNull_NumeroMotor = 1 AND [NumeroMotor] IS NULL) OR ([NumeroMotor]"& _ 
+                " = @Original_NumeroMotor)) AND ((@IsNull_ano = 1 AND [ano] IS NULL) OR ([ano] = "& _ 
+                "@Original_ano)) AND ((@IsNull_NumeroSerie = 1 AND [NumeroSerie] IS NULL) OR ([Nu"& _ 
+                "meroSerie] = @Original_NumeroSerie)) AND ((@IsNull_PlacasTractor = 1 AND [Placas"& _ 
+                "Tractor] IS NULL) OR ([PlacasTractor] = @Original_PlacasTractor)) AND ((@IsNull_"& _ 
+                "PlacasJaula = 1 AND [PlacasJaula] IS NULL) OR ([PlacasJaula] = @Original_PlacasJ"& _ 
+                "aula)) AND ((@IsNull_Operador = 1 AND [Operador] IS NULL) OR ([Operador] = @Orig"& _ 
+                "inal_Operador)) AND ((@IsNull_Telefono = 1 AND [Telefono] IS NULL) OR ([Telefono"& _ 
+                "] = @Original_Telefono)) AND ((@IsNull_NumeroLicencia = 1 AND [NumeroLicencia] I"& _ 
+                "S NULL) OR ([NumeroLicencia] = @Original_NumeroLicencia)) AND ((@IsNull_Dueno = "& _ 
+                "1 AND [Dueno] IS NULL) OR ([Dueno] = @Original_Dueno)) AND ((@IsNull_TelefonoDue"& _ 
+                "no = 1 AND [TelefonoDueno] IS NULL) OR ([TelefonoDueno] = @Original_TelefonoDuen"& _ 
+                "o)) AND ((@IsNull_PagarFlete = 1 AND [PagarFlete] IS NULL) OR ([PagarFlete] = @O"& _ 
+                "riginal_PagarFlete)) AND ((@IsNull_FleteMenos = 1 AND [FleteMenos] IS NULL) OR ("& _ 
+                "[FleteMenos] = @Original_FleteMenos)) AND ((@IsNull_Anticipo = 1 AND [Anticipo] "& _ 
+                "IS NULL) OR ([Anticipo] = @Original_Anticipo)) AND ((@IsNull_AgenciaAduanal = 1 "& _ 
+                "AND [AgenciaAduanal] IS NULL) OR ([AgenciaAduanal] = @Original_AgenciaAduanal)) "& _ 
+                "AND ((@IsNull_TelefonoAgencia = 1 AND [TelefonoAgencia] IS NULL) OR ([TelefonoAg"& _ 
+                "encia] = @Original_TelefonoAgencia)) AND ((@IsNull_CelularAgencia = 1 AND [Celul"& _ 
+                "arAgencia] IS NULL) OR ([CelularAgencia] = @Original_CelularAgencia)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IdEmbarque", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IdEmbarque", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_FechaEmbarque", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaEmbarque", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -1939,6 +1980,8 @@ Namespace FMSDBDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NumeroFactura", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroFactura", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NombreAgricultor", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreAgricultor", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NombreAgricultor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreAgricultor", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TelefonoAgricultor", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TelefonoAgricultor", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TelefonoAgricultor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TelefonoAgricultor", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Direccion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Direccion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Direccion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Direccion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PesoKgs", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PesoKgs", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -1958,7 +2001,7 @@ Namespace FMSDBDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NumeroMotor", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroMotor", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NumeroMotor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroMotor", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ano", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ano", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ano", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ano", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ano", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ano", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NumeroSerie", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroSerie", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NumeroSerie", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroSerie", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PlacasTractor", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PlacasTractor", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -1989,27 +2032,27 @@ Namespace FMSDBDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CelularAgencia", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CelularAgencia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Table] ([IdEmbarque], [FechaEmbarque], [NumeroFactura], [Nombr"& _ 
-                "eAgricultor], [Direccion], [PesoKgs], [Tipo], [Observacion], [LineaTransporte], "& _ 
-                "[NumeroGuia], [CamionMarca], [Color], [NumeroMotor], [ano], [NumeroSerie], [Plac"& _ 
-                "asTractor], [PlacasJaula], [Operador], [Telefono], [NumeroLicencia], [Dueno], [T"& _ 
-                "elefonoDueno], [PagarFlete], [FleteMenos], [Anticipo], [AgenciaAduanal], [Telefo"& _ 
-                "noAgencia], [CelularAgencia]) VALUES (@IdEmbarque, @FechaEmbarque, @NumeroFactur"& _ 
-                "a, @NombreAgricultor, @Direccion, @PesoKgs, @Tipo, @Observacion, @LineaTransport"& _ 
-                "e, @NumeroGuia, @CamionMarca, @Color, @NumeroMotor, @ano, @NumeroSerie, @PlacasT"& _ 
-                "ractor, @PlacasJaula, @Operador, @Telefono, @NumeroLicencia, @Dueno, @TelefonoDu"& _ 
-                "eno, @PagarFlete, @FleteMenos, @Anticipo, @AgenciaAduanal, @TelefonoAgencia, @Ce"& _ 
-                "lularAgencia);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT IdEmbarque, FechaEmbarque, NumeroFactura, NombreAgriculto"& _ 
-                "r, Direccion, PesoKgs, Tipo, Observacion, LineaTransporte, NumeroGuia, CamionMar"& _ 
-                "ca, Color, NumeroMotor, ano, NumeroSerie, PlacasTractor, PlacasJaula, Operador, "& _ 
-                "Telefono, NumeroLicencia, Dueno, TelefonoDueno, PagarFlete, FleteMenos, Anticipo"& _ 
-                ", AgenciaAduanal, TelefonoAgencia, CelularAgencia FROM [Table] WHERE (IdEmbarque"& _ 
-                " = @IdEmbarque)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Embarques] ([FechaEmbarque], [NumeroFactura], [NombreAgriculto"& _ 
+                "r], [TelefonoAgricultor], [Direccion], [PesoKgs], [Tipo], [Observacion], [LineaT"& _ 
+                "ransporte], [NumeroGuia], [CamionMarca], [Color], [NumeroMotor], [ano], [NumeroS"& _ 
+                "erie], [PlacasTractor], [PlacasJaula], [Operador], [Telefono], [NumeroLicencia],"& _ 
+                " [Dueno], [TelefonoDueno], [PagarFlete], [FleteMenos], [Anticipo], [AgenciaAduan"& _ 
+                "al], [TelefonoAgencia], [CelularAgencia]) VALUES (@FechaEmbarque, @NumeroFactura"& _ 
+                ", @NombreAgricultor, @TelefonoAgricultor, @Direccion, @PesoKgs, @Tipo, @Observac"& _ 
+                "ion, @LineaTransporte, @NumeroGuia, @CamionMarca, @Color, @NumeroMotor, @ano, @N"& _ 
+                "umeroSerie, @PlacasTractor, @PlacasJaula, @Operador, @Telefono, @NumeroLicencia,"& _ 
+                " @Dueno, @TelefonoDueno, @PagarFlete, @FleteMenos, @Anticipo, @AgenciaAduanal, @"& _ 
+                "TelefonoAgencia, @CelularAgencia);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT IdEmbarque, FechaEmbarque, NumeroFact"& _ 
+                "ura, NombreAgricultor, TelefonoAgricultor, Direccion, PesoKgs, Tipo, Observacion"& _ 
+                ", LineaTransporte, NumeroGuia, CamionMarca, Color, NumeroMotor, ano, NumeroSerie"& _ 
+                ", PlacasTractor, PlacasJaula, Operador, Telefono, NumeroLicencia, Dueno, Telefon"& _ 
+                "oDueno, PagarFlete, FleteMenos, Anticipo, AgenciaAduanal, TelefonoAgencia, Celul"& _ 
+                "arAgencia FROM Embarques WHERE (IdEmbarque = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IdEmbarque", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IdEmbarque", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaEmbarque", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaEmbarque", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumeroFactura", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroFactura", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NombreAgricultor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreAgricultor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TelefonoAgricultor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TelefonoAgricultor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Direccion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Direccion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PesoKgs", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "PesoKgs", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -2019,7 +2062,7 @@ Namespace FMSDBDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CamionMarca", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CamionMarca", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Color", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Color", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumeroMotor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroMotor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ano", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ano", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ano", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ano", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumeroSerie", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroSerie", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PlacasTractor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PlacasTractor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PlacasJaula", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PlacasJaula", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -2036,61 +2079,63 @@ Namespace FMSDBDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CelularAgencia", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CelularAgencia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Table] SET [IdEmbarque] = @IdEmbarque, [FechaEmbarque] = @FechaEmba"& _ 
-                "rque, [NumeroFactura] = @NumeroFactura, [NombreAgricultor] = @NombreAgricultor, "& _ 
-                "[Direccion] = @Direccion, [PesoKgs] = @PesoKgs, [Tipo] = @Tipo, [Observacion] = "& _ 
-                "@Observacion, [LineaTransporte] = @LineaTransporte, [NumeroGuia] = @NumeroGuia, "& _ 
-                "[CamionMarca] = @CamionMarca, [Color] = @Color, [NumeroMotor] = @NumeroMotor, [a"& _ 
-                "no] = @ano, [NumeroSerie] = @NumeroSerie, [PlacasTractor] = @PlacasTractor, [Pla"& _ 
-                "casJaula] = @PlacasJaula, [Operador] = @Operador, [Telefono] = @Telefono, [Numer"& _ 
-                "oLicencia] = @NumeroLicencia, [Dueno] = @Dueno, [TelefonoDueno] = @TelefonoDueno"& _ 
-                ", [PagarFlete] = @PagarFlete, [FleteMenos] = @FleteMenos, [Anticipo] = @Anticipo"& _ 
-                ", [AgenciaAduanal] = @AgenciaAduanal, [TelefonoAgencia] = @TelefonoAgencia, [Cel"& _ 
-                "ularAgencia] = @CelularAgencia WHERE (([IdEmbarque] = @Original_IdEmbarque) AND "& _ 
-                "((@IsNull_FechaEmbarque = 1 AND [FechaEmbarque] IS NULL) OR ([FechaEmbarque] = @"& _ 
-                "Original_FechaEmbarque)) AND ((@IsNull_NumeroFactura = 1 AND [NumeroFactura] IS "& _ 
-                "NULL) OR ([NumeroFactura] = @Original_NumeroFactura)) AND ((@IsNull_NombreAgricu"& _ 
-                "ltor = 1 AND [NombreAgricultor] IS NULL) OR ([NombreAgricultor] = @Original_Nomb"& _ 
-                "reAgricultor)) AND ((@IsNull_Direccion = 1 AND [Direccion] IS NULL) OR ([Direcci"& _ 
-                "on] = @Original_Direccion)) AND ((@IsNull_PesoKgs = 1 AND [PesoKgs] IS NULL) OR "& _ 
-                "([PesoKgs] = @Original_PesoKgs)) AND ((@IsNull_Tipo = 1 AND [Tipo] IS NULL) OR ("& _ 
-                "[Tipo] = @Original_Tipo)) AND ((@IsNull_Observacion = 1 AND [Observacion] IS NUL"& _ 
-                "L) OR ([Observacion] = @Original_Observacion)) AND ((@IsNull_LineaTransporte = 1"& _ 
-                " AND [LineaTransporte] IS NULL) OR ([LineaTransporte] = @Original_LineaTransport"& _ 
-                "e)) AND ((@IsNull_NumeroGuia = 1 AND [NumeroGuia] IS NULL) OR ([NumeroGuia] = @O"& _ 
-                "riginal_NumeroGuia)) AND ((@IsNull_CamionMarca = 1 AND [CamionMarca] IS NULL) OR"& _ 
-                " ([CamionMarca] = @Original_CamionMarca)) AND ((@IsNull_Color = 1 AND [Color] IS"& _ 
-                " NULL) OR ([Color] = @Original_Color)) AND ((@IsNull_NumeroMotor = 1 AND [Numero"& _ 
-                "Motor] IS NULL) OR ([NumeroMotor] = @Original_NumeroMotor)) AND ((@IsNull_ano = "& _ 
-                "1 AND [ano] IS NULL) OR ([ano] = @Original_ano)) AND ((@IsNull_NumeroSerie = 1 A"& _ 
-                "ND [NumeroSerie] IS NULL) OR ([NumeroSerie] = @Original_NumeroSerie)) AND ((@IsN"& _ 
-                "ull_PlacasTractor = 1 AND [PlacasTractor] IS NULL) OR ([PlacasTractor] = @Origin"& _ 
-                "al_PlacasTractor)) AND ((@IsNull_PlacasJaula = 1 AND [PlacasJaula] IS NULL) OR ("& _ 
-                "[PlacasJaula] = @Original_PlacasJaula)) AND ((@IsNull_Operador = 1 AND [Operador"& _ 
-                "] IS NULL) OR ([Operador] = @Original_Operador)) AND ((@IsNull_Telefono = 1 AND "& _ 
-                "[Telefono] IS NULL) OR ([Telefono] = @Original_Telefono)) AND ((@IsNull_NumeroLi"& _ 
-                "cencia = 1 AND [NumeroLicencia] IS NULL) OR ([NumeroLicencia] = @Original_Numero"& _ 
-                "Licencia)) AND ((@IsNull_Dueno = 1 AND [Dueno] IS NULL) OR ([Dueno] = @Original_"& _ 
-                "Dueno)) AND ((@IsNull_TelefonoDueno = 1 AND [TelefonoDueno] IS NULL) OR ([Telefo"& _ 
-                "noDueno] = @Original_TelefonoDueno)) AND ((@IsNull_PagarFlete = 1 AND [PagarFlet"& _ 
-                "e] IS NULL) OR ([PagarFlete] = @Original_PagarFlete)) AND ((@IsNull_FleteMenos ="& _ 
-                " 1 AND [FleteMenos] IS NULL) OR ([FleteMenos] = @Original_FleteMenos)) AND ((@Is"& _ 
-                "Null_Anticipo = 1 AND [Anticipo] IS NULL) OR ([Anticipo] = @Original_Anticipo)) "& _ 
-                "AND ((@IsNull_AgenciaAduanal = 1 AND [AgenciaAduanal] IS NULL) OR ([AgenciaAduan"& _ 
-                "al] = @Original_AgenciaAduanal)) AND ((@IsNull_TelefonoAgencia = 1 AND [Telefono"& _ 
-                "Agencia] IS NULL) OR ([TelefonoAgencia] = @Original_TelefonoAgencia)) AND ((@IsN"& _ 
-                "ull_CelularAgencia = 1 AND [CelularAgencia] IS NULL) OR ([CelularAgencia] = @Ori"& _ 
-                "ginal_CelularAgencia)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT IdEmbarque, FechaEmbarque, NumeroFactura, Nombr"& _ 
-                "eAgricultor, Direccion, PesoKgs, Tipo, Observacion, LineaTransporte, NumeroGuia,"& _ 
-                " CamionMarca, Color, NumeroMotor, ano, NumeroSerie, PlacasTractor, PlacasJaula, "& _ 
-                "Operador, Telefono, NumeroLicencia, Dueno, TelefonoDueno, PagarFlete, FleteMenos"& _ 
-                ", Anticipo, AgenciaAduanal, TelefonoAgencia, CelularAgencia FROM [Table] WHERE ("& _ 
-                "IdEmbarque = @IdEmbarque)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Embarques] SET [FechaEmbarque] = @FechaEmbarque, [NumeroFactura] = "& _ 
+                "@NumeroFactura, [NombreAgricultor] = @NombreAgricultor, [TelefonoAgricultor] = @"& _ 
+                "TelefonoAgricultor, [Direccion] = @Direccion, [PesoKgs] = @PesoKgs, [Tipo] = @Ti"& _ 
+                "po, [Observacion] = @Observacion, [LineaTransporte] = @LineaTransporte, [NumeroG"& _ 
+                "uia] = @NumeroGuia, [CamionMarca] = @CamionMarca, [Color] = @Color, [NumeroMotor"& _ 
+                "] = @NumeroMotor, [ano] = @ano, [NumeroSerie] = @NumeroSerie, [PlacasTractor] = "& _ 
+                "@PlacasTractor, [PlacasJaula] = @PlacasJaula, [Operador] = @Operador, [Telefono]"& _ 
+                " = @Telefono, [NumeroLicencia] = @NumeroLicencia, [Dueno] = @Dueno, [TelefonoDue"& _ 
+                "no] = @TelefonoDueno, [PagarFlete] = @PagarFlete, [FleteMenos] = @FleteMenos, [A"& _ 
+                "nticipo] = @Anticipo, [AgenciaAduanal] = @AgenciaAduanal, [TelefonoAgencia] = @T"& _ 
+                "elefonoAgencia, [CelularAgencia] = @CelularAgencia WHERE (([IdEmbarque] = @Origi"& _ 
+                "nal_IdEmbarque) AND ((@IsNull_FechaEmbarque = 1 AND [FechaEmbarque] IS NULL) OR "& _ 
+                "([FechaEmbarque] = @Original_FechaEmbarque)) AND ((@IsNull_NumeroFactura = 1 AND"& _ 
+                " [NumeroFactura] IS NULL) OR ([NumeroFactura] = @Original_NumeroFactura)) AND (("& _ 
+                "@IsNull_NombreAgricultor = 1 AND [NombreAgricultor] IS NULL) OR ([NombreAgricult"& _ 
+                "or] = @Original_NombreAgricultor)) AND ((@IsNull_TelefonoAgricultor = 1 AND [Tel"& _ 
+                "efonoAgricultor] IS NULL) OR ([TelefonoAgricultor] = @Original_TelefonoAgriculto"& _ 
+                "r)) AND ((@IsNull_Direccion = 1 AND [Direccion] IS NULL) OR ([Direccion] = @Orig"& _ 
+                "inal_Direccion)) AND ((@IsNull_PesoKgs = 1 AND [PesoKgs] IS NULL) OR ([PesoKgs] "& _ 
+                "= @Original_PesoKgs)) AND ((@IsNull_Tipo = 1 AND [Tipo] IS NULL) OR ([Tipo] = @O"& _ 
+                "riginal_Tipo)) AND ((@IsNull_Observacion = 1 AND [Observacion] IS NULL) OR ([Obs"& _ 
+                "ervacion] = @Original_Observacion)) AND ((@IsNull_LineaTransporte = 1 AND [Linea"& _ 
+                "Transporte] IS NULL) OR ([LineaTransporte] = @Original_LineaTransporte)) AND ((@"& _ 
+                "IsNull_NumeroGuia = 1 AND [NumeroGuia] IS NULL) OR ([NumeroGuia] = @Original_Num"& _ 
+                "eroGuia)) AND ((@IsNull_CamionMarca = 1 AND [CamionMarca] IS NULL) OR ([CamionMa"& _ 
+                "rca] = @Original_CamionMarca)) AND ((@IsNull_Color = 1 AND [Color] IS NULL) OR ("& _ 
+                "[Color] = @Original_Color)) AND ((@IsNull_NumeroMotor = 1 AND [NumeroMotor] IS N"& _ 
+                "ULL) OR ([NumeroMotor] = @Original_NumeroMotor)) AND ((@IsNull_ano = 1 AND [ano]"& _ 
+                " IS NULL) OR ([ano] = @Original_ano)) AND ((@IsNull_NumeroSerie = 1 AND [NumeroS"& _ 
+                "erie] IS NULL) OR ([NumeroSerie] = @Original_NumeroSerie)) AND ((@IsNull_PlacasT"& _ 
+                "ractor = 1 AND [PlacasTractor] IS NULL) OR ([PlacasTractor] = @Original_PlacasTr"& _ 
+                "actor)) AND ((@IsNull_PlacasJaula = 1 AND [PlacasJaula] IS NULL) OR ([PlacasJaul"& _ 
+                "a] = @Original_PlacasJaula)) AND ((@IsNull_Operador = 1 AND [Operador] IS NULL) "& _ 
+                "OR ([Operador] = @Original_Operador)) AND ((@IsNull_Telefono = 1 AND [Telefono] "& _ 
+                "IS NULL) OR ([Telefono] = @Original_Telefono)) AND ((@IsNull_NumeroLicencia = 1 "& _ 
+                "AND [NumeroLicencia] IS NULL) OR ([NumeroLicencia] = @Original_NumeroLicencia)) "& _ 
+                "AND ((@IsNull_Dueno = 1 AND [Dueno] IS NULL) OR ([Dueno] = @Original_Dueno)) AND"& _ 
+                " ((@IsNull_TelefonoDueno = 1 AND [TelefonoDueno] IS NULL) OR ([TelefonoDueno] = "& _ 
+                "@Original_TelefonoDueno)) AND ((@IsNull_PagarFlete = 1 AND [PagarFlete] IS NULL)"& _ 
+                " OR ([PagarFlete] = @Original_PagarFlete)) AND ((@IsNull_FleteMenos = 1 AND [Fle"& _ 
+                "teMenos] IS NULL) OR ([FleteMenos] = @Original_FleteMenos)) AND ((@IsNull_Antici"& _ 
+                "po = 1 AND [Anticipo] IS NULL) OR ([Anticipo] = @Original_Anticipo)) AND ((@IsNu"& _ 
+                "ll_AgenciaAduanal = 1 AND [AgenciaAduanal] IS NULL) OR ([AgenciaAduanal] = @Orig"& _ 
+                "inal_AgenciaAduanal)) AND ((@IsNull_TelefonoAgencia = 1 AND [TelefonoAgencia] IS"& _ 
+                " NULL) OR ([TelefonoAgencia] = @Original_TelefonoAgencia)) AND ((@IsNull_Celular"& _ 
+                "Agencia = 1 AND [CelularAgencia] IS NULL) OR ([CelularAgencia] = @Original_Celul"& _ 
+                "arAgencia)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT IdEmbarque, FechaEmbarque, NumeroFactura, NombreAgricultor"& _ 
+                ", TelefonoAgricultor, Direccion, PesoKgs, Tipo, Observacion, LineaTransporte, Nu"& _ 
+                "meroGuia, CamionMarca, Color, NumeroMotor, ano, NumeroSerie, PlacasTractor, Plac"& _ 
+                "asJaula, Operador, Telefono, NumeroLicencia, Dueno, TelefonoDueno, PagarFlete, F"& _ 
+                "leteMenos, Anticipo, AgenciaAduanal, TelefonoAgencia, CelularAgencia FROM Embarq"& _ 
+                "ues WHERE (IdEmbarque = @IdEmbarque)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IdEmbarque", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IdEmbarque", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaEmbarque", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaEmbarque", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumeroFactura", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroFactura", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NombreAgricultor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreAgricultor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TelefonoAgricultor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TelefonoAgricultor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Direccion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Direccion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PesoKgs", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 2, "PesoKgs", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tipo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tipo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -2100,7 +2145,7 @@ Namespace FMSDBDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CamionMarca", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CamionMarca", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Color", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Color", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumeroMotor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroMotor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ano", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ano", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ano", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ano", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NumeroSerie", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroSerie", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PlacasTractor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PlacasTractor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PlacasJaula", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PlacasJaula", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -2122,6 +2167,8 @@ Namespace FMSDBDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NumeroFactura", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroFactura", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NombreAgricultor", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreAgricultor", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NombreAgricultor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NombreAgricultor", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TelefonoAgricultor", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TelefonoAgricultor", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TelefonoAgricultor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TelefonoAgricultor", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Direccion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Direccion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Direccion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Direccion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PesoKgs", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PesoKgs", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -2141,7 +2188,7 @@ Namespace FMSDBDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NumeroMotor", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroMotor", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NumeroMotor", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroMotor", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ano", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ano", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ano", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ano", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ano", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ano", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_NumeroSerie", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroSerie", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_NumeroSerie", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NumeroSerie", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PlacasTractor", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PlacasTractor", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -2170,6 +2217,7 @@ Namespace FMSDBDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TelefonoAgencia", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TelefonoAgencia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CelularAgencia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CelularAgencia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CelularAgencia", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CelularAgencia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IdEmbarque", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "IdEmbarque", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2185,11 +2233,11 @@ Namespace FMSDBDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT IdEmbarque, FechaEmbarque, NumeroFactura, NombreAgricultor, Direccion, Pes"& _ 
-                "oKgs, Tipo, Observacion, LineaTransporte, NumeroGuia, CamionMarca, Color, Numero"& _ 
-                "Motor, ano, NumeroSerie, PlacasTractor, PlacasJaula, Operador, Telefono, NumeroL"& _ 
-                "icencia, Dueno, TelefonoDueno, PagarFlete, FleteMenos, Anticipo, AgenciaAduanal,"& _ 
-                " TelefonoAgencia, CelularAgencia FROM dbo.[Table]"
+            Me._commandCollection(0).CommandText = "SELECT IdEmbarque, FechaEmbarque, NumeroFactura, NombreAgricultor, TelefonoAgricu"& _ 
+                "ltor, Direccion, PesoKgs, Tipo, Observacion, LineaTransporte, NumeroGuia, Camion"& _ 
+                "Marca, Color, NumeroMotor, ano, NumeroSerie, PlacasTractor, PlacasJaula, Operado"& _ 
+                "r, Telefono, NumeroLicencia, Dueno, TelefonoDueno, PagarFlete, FleteMenos, Antic"& _ 
+                "ipo, AgenciaAduanal, TelefonoAgencia, CelularAgencia FROM dbo.Embarques"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -2197,7 +2245,7 @@ Namespace FMSDBDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As FMSDBDataSet.TableDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As FMSDBDataSet.EmbarquesDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -2210,9 +2258,9 @@ Namespace FMSDBDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As FMSDBDataSet.TableDataTable
+        Public Overloads Overridable Function GetData() As FMSDBDataSet.EmbarquesDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As FMSDBDataSet.TableDataTable = New FMSDBDataSet.TableDataTable()
+            Dim dataTable As FMSDBDataSet.EmbarquesDataTable = New FMSDBDataSet.EmbarquesDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -2220,7 +2268,7 @@ Namespace FMSDBDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As FMSDBDataSet.TableDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As FMSDBDataSet.EmbarquesDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
@@ -2228,7 +2276,7 @@ Namespace FMSDBDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataSet As FMSDBDataSet) As Integer
-            Return Me.Adapter.Update(dataSet, "Table")
+            Return Me.Adapter.Update(dataSet, "Embarques")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2254,6 +2302,7 @@ Namespace FMSDBDataSetTableAdapters
                     ByVal Original_FechaEmbarque As Global.System.Nullable(Of Date),  _
                     ByVal Original_NumeroFactura As String,  _
                     ByVal Original_NombreAgricultor As String,  _
+                    ByVal Original_TelefonoAgricultor As String,  _
                     ByVal Original_Direccion As String,  _
                     ByVal Original_PesoKgs As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_Tipo As String,  _
@@ -2263,7 +2312,7 @@ Namespace FMSDBDataSetTableAdapters
                     ByVal Original_CamionMarca As String,  _
                     ByVal Original_Color As String,  _
                     ByVal Original_NumeroMotor As String,  _
-                    ByVal Original_ano As Global.System.Nullable(Of Date),  _
+                    ByVal Original_ano As String,  _
                     ByVal Original_NumeroSerie As String,  _
                     ByVal Original_PlacasTractor As String,  _
                     ByVal Original_PlacasJaula As String,  _
@@ -2300,173 +2349,180 @@ Namespace FMSDBDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_NombreAgricultor,String)
             End If
-            If (Original_Direccion Is Nothing) Then
+            If (Original_TelefonoAgricultor Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Direccion,String)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_TelefonoAgricultor,String)
             End If
-            If (Original_PesoKgs.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_PesoKgs.Value,Decimal)
-            Else
+            If (Original_Direccion Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_Direccion,String)
             End If
-            If (Original_Tipo Is Nothing) Then
+            If (Original_PesoKgs.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_PesoKgs.Value,Decimal)
+            Else
                 Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_Tipo,String)
             End If
-            If (Original_Observacion Is Nothing) Then
+            If (Original_Tipo Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_Observacion,String)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_Tipo,String)
             End If
-            If (Original_LineaTransporte Is Nothing) Then
+            If (Original_Observacion Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_LineaTransporte,String)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_Observacion,String)
             End If
-            If (Original_NumeroGuia Is Nothing) Then
+            If (Original_LineaTransporte Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_NumeroGuia,String)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_LineaTransporte,String)
             End If
-            If (Original_CamionMarca Is Nothing) Then
+            If (Original_NumeroGuia Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_CamionMarca,String)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_NumeroGuia,String)
             End If
-            If (Original_Color Is Nothing) Then
+            If (Original_CamionMarca Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_Color,String)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_CamionMarca,String)
             End If
-            If (Original_NumeroMotor Is Nothing) Then
+            If (Original_Color Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_NumeroMotor,String)
+                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_Color,String)
             End If
-            If (Original_ano.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_ano.Value,Date)
-            Else
+            If (Original_NumeroMotor Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_NumeroMotor,String)
             End If
-            If (Original_NumeroSerie Is Nothing) Then
+            If (Original_ano Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(27).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(28).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_NumeroSerie,String)
+                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_ano,String)
             End If
-            If (Original_PlacasTractor Is Nothing) Then
+            If (Original_NumeroSerie Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_PlacasTractor,String)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_NumeroSerie,String)
             End If
-            If (Original_PlacasJaula Is Nothing) Then
+            If (Original_PlacasTractor Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_PlacasJaula,String)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_PlacasTractor,String)
             End If
-            If (Original_Operador Is Nothing) Then
+            If (Original_PlacasJaula Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_Operador,String)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_PlacasJaula,String)
             End If
-            If (Original_Telefono Is Nothing) Then
+            If (Original_Operador Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_Telefono,String)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_Operador,String)
             End If
-            If (Original_NumeroLicencia Is Nothing) Then
+            If (Original_Telefono Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_NumeroLicencia,String)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_Telefono,String)
             End If
-            If (Original_Dueno Is Nothing) Then
+            If (Original_NumeroLicencia Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(39).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(40).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(40).Value = CType(Original_Dueno,String)
+                Me.Adapter.DeleteCommand.Parameters(40).Value = CType(Original_NumeroLicencia,String)
             End If
-            If (Original_TelefonoDueno Is Nothing) Then
+            If (Original_Dueno Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(41).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(42).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(42).Value = CType(Original_TelefonoDueno,String)
+                Me.Adapter.DeleteCommand.Parameters(42).Value = CType(Original_Dueno,String)
             End If
-            If (Original_PagarFlete.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(43).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(44).Value = CType(Original_PagarFlete.Value,Decimal)
-            Else
+            If (Original_TelefonoDueno Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(43).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(44).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(43).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(44).Value = CType(Original_TelefonoDueno,String)
             End If
-            If (Original_FleteMenos.HasValue = true) Then
+            If (Original_PagarFlete.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(45).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(46).Value = CType(Original_FleteMenos.Value,Decimal)
+                Me.Adapter.DeleteCommand.Parameters(46).Value = CType(Original_PagarFlete.Value,Decimal)
             Else
                 Me.Adapter.DeleteCommand.Parameters(45).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(46).Value = Global.System.DBNull.Value
             End If
-            If (Original_Anticipo.HasValue = true) Then
+            If (Original_FleteMenos.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(47).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(48).Value = CType(Original_Anticipo.Value,Decimal)
+                Me.Adapter.DeleteCommand.Parameters(48).Value = CType(Original_FleteMenos.Value,Decimal)
             Else
                 Me.Adapter.DeleteCommand.Parameters(47).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(48).Value = Global.System.DBNull.Value
             End If
-            If (Original_AgenciaAduanal Is Nothing) Then
+            If (Original_Anticipo.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(49).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(50).Value = CType(Original_Anticipo.Value,Decimal)
+            Else
                 Me.Adapter.DeleteCommand.Parameters(49).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(50).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(49).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(50).Value = CType(Original_AgenciaAduanal,String)
             End If
-            If (Original_TelefonoAgencia Is Nothing) Then
+            If (Original_AgenciaAduanal Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(51).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(52).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(51).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(52).Value = CType(Original_TelefonoAgencia,String)
+                Me.Adapter.DeleteCommand.Parameters(52).Value = CType(Original_AgenciaAduanal,String)
             End If
-            If (Original_CelularAgencia Is Nothing) Then
+            If (Original_TelefonoAgencia Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(53).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(54).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(53).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(54).Value = CType(Original_CelularAgencia,String)
+                Me.Adapter.DeleteCommand.Parameters(54).Value = CType(Original_TelefonoAgencia,String)
+            End If
+            If (Original_CelularAgencia Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(55).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(56).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(55).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(56).Value = CType(Original_CelularAgencia,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -2488,10 +2544,10 @@ Namespace FMSDBDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
         Public Overloads Overridable Function Insert( _
-                    ByVal IdEmbarque As Integer,  _
                     ByVal FechaEmbarque As Global.System.Nullable(Of Date),  _
                     ByVal NumeroFactura As String,  _
                     ByVal NombreAgricultor As String,  _
+                    ByVal TelefonoAgricultor As String,  _
                     ByVal Direccion As String,  _
                     ByVal PesoKgs As Global.System.Nullable(Of Decimal),  _
                     ByVal Tipo As String,  _
@@ -2501,7 +2557,7 @@ Namespace FMSDBDataSetTableAdapters
                     ByVal CamionMarca As String,  _
                     ByVal Color As String,  _
                     ByVal NumeroMotor As String,  _
-                    ByVal ano As Global.System.Nullable(Of Date),  _
+                    ByVal ano As String,  _
                     ByVal NumeroSerie As String,  _
                     ByVal PlacasTractor As String,  _
                     ByVal PlacasJaula As String,  _
@@ -2516,21 +2572,25 @@ Namespace FMSDBDataSetTableAdapters
                     ByVal AgenciaAduanal As String,  _
                     ByVal TelefonoAgencia As String,  _
                     ByVal CelularAgencia As String) As Integer
-            Me.Adapter.InsertCommand.Parameters(0).Value = CType(IdEmbarque,Integer)
             If (FechaEmbarque.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(FechaEmbarque.Value,Date)
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(FechaEmbarque.Value,Date)
             Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
             If (NumeroFactura Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(NumeroFactura,String)
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(NumeroFactura,String)
             End If
             If (NombreAgricultor Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(NombreAgricultor,String)
+            End If
+            If (TelefonoAgricultor Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(NombreAgricultor,String)
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(TelefonoAgricultor,String)
             End If
             If (Direccion Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
@@ -2577,10 +2637,10 @@ Namespace FMSDBDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(12).Value = CType(NumeroMotor,String)
             End If
-            If (ano.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(13).Value = CType(ano.Value,Date)
-            Else
+            If (ano Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(ano,String)
             End If
             If (NumeroSerie Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
@@ -2672,10 +2732,10 @@ Namespace FMSDBDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
         Public Overloads Overridable Function Update( _
-                    ByVal IdEmbarque As Integer,  _
                     ByVal FechaEmbarque As Global.System.Nullable(Of Date),  _
                     ByVal NumeroFactura As String,  _
                     ByVal NombreAgricultor As String,  _
+                    ByVal TelefonoAgricultor As String,  _
                     ByVal Direccion As String,  _
                     ByVal PesoKgs As Global.System.Nullable(Of Decimal),  _
                     ByVal Tipo As String,  _
@@ -2685,7 +2745,7 @@ Namespace FMSDBDataSetTableAdapters
                     ByVal CamionMarca As String,  _
                     ByVal Color As String,  _
                     ByVal NumeroMotor As String,  _
-                    ByVal ano As Global.System.Nullable(Of Date),  _
+                    ByVal ano As String,  _
                     ByVal NumeroSerie As String,  _
                     ByVal PlacasTractor As String,  _
                     ByVal PlacasJaula As String,  _
@@ -2704,6 +2764,7 @@ Namespace FMSDBDataSetTableAdapters
                     ByVal Original_FechaEmbarque As Global.System.Nullable(Of Date),  _
                     ByVal Original_NumeroFactura As String,  _
                     ByVal Original_NombreAgricultor As String,  _
+                    ByVal Original_TelefonoAgricultor As String,  _
                     ByVal Original_Direccion As String,  _
                     ByVal Original_PesoKgs As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_Tipo As String,  _
@@ -2713,7 +2774,7 @@ Namespace FMSDBDataSetTableAdapters
                     ByVal Original_CamionMarca As String,  _
                     ByVal Original_Color As String,  _
                     ByVal Original_NumeroMotor As String,  _
-                    ByVal Original_ano As Global.System.Nullable(Of Date),  _
+                    ByVal Original_ano As String,  _
                     ByVal Original_NumeroSerie As String,  _
                     ByVal Original_PlacasTractor As String,  _
                     ByVal Original_PlacasJaula As String,  _
@@ -2727,22 +2788,27 @@ Namespace FMSDBDataSetTableAdapters
                     ByVal Original_Anticipo As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_AgenciaAduanal As String,  _
                     ByVal Original_TelefonoAgencia As String,  _
-                    ByVal Original_CelularAgencia As String) As Integer
-            Me.Adapter.UpdateCommand.Parameters(0).Value = CType(IdEmbarque,Integer)
+                    ByVal Original_CelularAgencia As String,  _
+                    ByVal IdEmbarque As Integer) As Integer
             If (FechaEmbarque.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(FechaEmbarque.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(FechaEmbarque.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
             If (NumeroFactura Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(NumeroFactura,String)
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(NumeroFactura,String)
             End If
             If (NombreAgricultor Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(NombreAgricultor,String)
+            End If
+            If (TelefonoAgricultor Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(NombreAgricultor,String)
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(TelefonoAgricultor,String)
             End If
             If (Direccion Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
@@ -2789,10 +2855,10 @@ Namespace FMSDBDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(12).Value = CType(NumeroMotor,String)
             End If
-            If (ano.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(ano.Value,Date)
-            Else
+            If (ano Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(ano,String)
             End If
             If (NumeroSerie Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
@@ -2886,174 +2952,182 @@ Namespace FMSDBDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_NombreAgricultor,String)
             End If
-            If (Original_Direccion Is Nothing) Then
+            If (Original_TelefonoAgricultor Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_Direccion,String)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_TelefonoAgricultor,String)
             End If
-            If (Original_PesoKgs.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_PesoKgs.Value,Decimal)
-            Else
+            If (Original_Direccion Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_Direccion,String)
             End If
-            If (Original_Tipo Is Nothing) Then
+            If (Original_PesoKgs.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_PesoKgs.Value,Decimal)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_Tipo,String)
             End If
-            If (Original_Observacion Is Nothing) Then
+            If (Original_Tipo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_Observacion,String)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_Tipo,String)
             End If
-            If (Original_LineaTransporte Is Nothing) Then
+            If (Original_Observacion Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_LineaTransporte,String)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_Observacion,String)
             End If
-            If (Original_NumeroGuia Is Nothing) Then
+            If (Original_LineaTransporte Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_NumeroGuia,String)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_LineaTransporte,String)
             End If
-            If (Original_CamionMarca Is Nothing) Then
+            If (Original_NumeroGuia Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_CamionMarca,String)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_NumeroGuia,String)
             End If
-            If (Original_Color Is Nothing) Then
+            If (Original_CamionMarca Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(49).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_Color,String)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_CamionMarca,String)
             End If
-            If (Original_NumeroMotor Is Nothing) Then
+            If (Original_Color Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(51).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(52).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(51).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_NumeroMotor,String)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_Color,String)
             End If
-            If (Original_ano.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_ano.Value,Date)
-            Else
+            If (Original_NumeroMotor Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(53).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_NumeroMotor,String)
             End If
-            If (Original_NumeroSerie Is Nothing) Then
+            If (Original_ano Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(55).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(56).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(55).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_NumeroSerie,String)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_ano,String)
             End If
-            If (Original_PlacasTractor Is Nothing) Then
+            If (Original_NumeroSerie Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(57).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(58).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(57).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_PlacasTractor,String)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_NumeroSerie,String)
             End If
-            If (Original_PlacasJaula Is Nothing) Then
+            If (Original_PlacasTractor Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(59).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(60).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(59).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_PlacasJaula,String)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_PlacasTractor,String)
             End If
-            If (Original_Operador Is Nothing) Then
+            If (Original_PlacasJaula Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(61).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(61).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_Operador,String)
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_PlacasJaula,String)
             End If
-            If (Original_Telefono Is Nothing) Then
+            If (Original_Operador Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(63).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(63).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_Telefono,String)
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_Operador,String)
             End If
-            If (Original_NumeroLicencia Is Nothing) Then
+            If (Original_Telefono Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(65).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(65).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_NumeroLicencia,String)
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_Telefono,String)
             End If
-            If (Original_Dueno Is Nothing) Then
+            If (Original_NumeroLicencia Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(67).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(68).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(67).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_Dueno,String)
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_NumeroLicencia,String)
             End If
-            If (Original_TelefonoDueno Is Nothing) Then
+            If (Original_Dueno Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(69).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(70).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(69).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Original_TelefonoDueno,String)
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Original_Dueno,String)
             End If
-            If (Original_PagarFlete.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Original_PagarFlete.Value,Decimal)
-            Else
+            If (Original_TelefonoDueno Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(71).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(72).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Original_TelefonoDueno,String)
             End If
-            If (Original_FleteMenos.HasValue = true) Then
+            If (Original_PagarFlete.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(73).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(Original_FleteMenos.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(Original_PagarFlete.Value,Decimal)
             Else
                 Me.Adapter.UpdateCommand.Parameters(73).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(74).Value = Global.System.DBNull.Value
             End If
-            If (Original_Anticipo.HasValue = true) Then
+            If (Original_FleteMenos.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(75).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Original_Anticipo.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Original_FleteMenos.Value,Decimal)
             Else
                 Me.Adapter.UpdateCommand.Parameters(75).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(76).Value = Global.System.DBNull.Value
             End If
-            If (Original_AgenciaAduanal Is Nothing) Then
+            If (Original_Anticipo.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(Original_Anticipo.Value,Decimal)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(77).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(78).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(Original_AgenciaAduanal,String)
             End If
-            If (Original_TelefonoAgencia Is Nothing) Then
+            If (Original_AgenciaAduanal Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(79).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(80).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(79).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(Original_TelefonoAgencia,String)
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(Original_AgenciaAduanal,String)
             End If
-            If (Original_CelularAgencia Is Nothing) Then
+            If (Original_TelefonoAgencia Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(81).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(82).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(81).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(Original_CelularAgencia,String)
+                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(Original_TelefonoAgencia,String)
             End If
+            If (Original_CelularAgencia Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(84).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(Original_CelularAgencia,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(85).Value = CType(IdEmbarque,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -3077,6 +3151,7 @@ Namespace FMSDBDataSetTableAdapters
                     ByVal FechaEmbarque As Global.System.Nullable(Of Date),  _
                     ByVal NumeroFactura As String,  _
                     ByVal NombreAgricultor As String,  _
+                    ByVal TelefonoAgricultor As String,  _
                     ByVal Direccion As String,  _
                     ByVal PesoKgs As Global.System.Nullable(Of Decimal),  _
                     ByVal Tipo As String,  _
@@ -3086,7 +3161,7 @@ Namespace FMSDBDataSetTableAdapters
                     ByVal CamionMarca As String,  _
                     ByVal Color As String,  _
                     ByVal NumeroMotor As String,  _
-                    ByVal ano As Global.System.Nullable(Of Date),  _
+                    ByVal ano As String,  _
                     ByVal NumeroSerie As String,  _
                     ByVal PlacasTractor As String,  _
                     ByVal PlacasJaula As String,  _
@@ -3105,6 +3180,7 @@ Namespace FMSDBDataSetTableAdapters
                     ByVal Original_FechaEmbarque As Global.System.Nullable(Of Date),  _
                     ByVal Original_NumeroFactura As String,  _
                     ByVal Original_NombreAgricultor As String,  _
+                    ByVal Original_TelefonoAgricultor As String,  _
                     ByVal Original_Direccion As String,  _
                     ByVal Original_PesoKgs As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_Tipo As String,  _
@@ -3114,7 +3190,7 @@ Namespace FMSDBDataSetTableAdapters
                     ByVal Original_CamionMarca As String,  _
                     ByVal Original_Color As String,  _
                     ByVal Original_NumeroMotor As String,  _
-                    ByVal Original_ano As Global.System.Nullable(Of Date),  _
+                    ByVal Original_ano As String,  _
                     ByVal Original_NumeroSerie As String,  _
                     ByVal Original_PlacasTractor As String,  _
                     ByVal Original_PlacasJaula As String,  _
@@ -3129,7 +3205,7 @@ Namespace FMSDBDataSetTableAdapters
                     ByVal Original_AgenciaAduanal As String,  _
                     ByVal Original_TelefonoAgencia As String,  _
                     ByVal Original_CelularAgencia As String) As Integer
-            Return Me.Update(Original_IdEmbarque, FechaEmbarque, NumeroFactura, NombreAgricultor, Direccion, PesoKgs, Tipo, Observacion, LineaTransporte, NumeroGuia, CamionMarca, Color, NumeroMotor, ano, NumeroSerie, PlacasTractor, PlacasJaula, Operador, Telefono, NumeroLicencia, Dueno, TelefonoDueno, PagarFlete, FleteMenos, Anticipo, AgenciaAduanal, TelefonoAgencia, CelularAgencia, Original_IdEmbarque, Original_FechaEmbarque, Original_NumeroFactura, Original_NombreAgricultor, Original_Direccion, Original_PesoKgs, Original_Tipo, Original_Observacion, Original_LineaTransporte, Original_NumeroGuia, Original_CamionMarca, Original_Color, Original_NumeroMotor, Original_ano, Original_NumeroSerie, Original_PlacasTractor, Original_PlacasJaula, Original_Operador, Original_Telefono, Original_NumeroLicencia, Original_Dueno, Original_TelefonoDueno, Original_PagarFlete, Original_FleteMenos, Original_Anticipo, Original_AgenciaAduanal, Original_TelefonoAgencia, Original_CelularAgencia)
+            Return Me.Update(FechaEmbarque, NumeroFactura, NombreAgricultor, TelefonoAgricultor, Direccion, PesoKgs, Tipo, Observacion, LineaTransporte, NumeroGuia, CamionMarca, Color, NumeroMotor, ano, NumeroSerie, PlacasTractor, PlacasJaula, Operador, Telefono, NumeroLicencia, Dueno, TelefonoDueno, PagarFlete, FleteMenos, Anticipo, AgenciaAduanal, TelefonoAgencia, CelularAgencia, Original_IdEmbarque, Original_FechaEmbarque, Original_NumeroFactura, Original_NombreAgricultor, Original_TelefonoAgricultor, Original_Direccion, Original_PesoKgs, Original_Tipo, Original_Observacion, Original_LineaTransporte, Original_NumeroGuia, Original_CamionMarca, Original_Color, Original_NumeroMotor, Original_ano, Original_NumeroSerie, Original_PlacasTractor, Original_PlacasJaula, Original_Operador, Original_Telefono, Original_NumeroLicencia, Original_Dueno, Original_TelefonoDueno, Original_PagarFlete, Original_FleteMenos, Original_Anticipo, Original_AgenciaAduanal, Original_TelefonoAgencia, Original_CelularAgencia, Original_IdEmbarque)
         End Function
     End Class
     
@@ -3146,7 +3222,7 @@ Namespace FMSDBDataSetTableAdapters
         
         Private _updateOrder As UpdateOrderOption
         
-        Private _tableTableAdapter As TableTableAdapter
+        Private _embarquesTableAdapter As EmbarquesTableAdapter
         
         Private _backupDataSetBeforeUpdate As Boolean
         
@@ -3168,12 +3244,12 @@ Namespace FMSDBDataSetTableAdapters
          Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
             "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property TableTableAdapter() As TableTableAdapter
+        Public Property EmbarquesTableAdapter() As EmbarquesTableAdapter
             Get
-                Return Me._tableTableAdapter
+                Return Me._embarquesTableAdapter
             End Get
             Set
-                Me._tableTableAdapter = value
+                Me._embarquesTableAdapter = value
             End Set
         End Property
         
@@ -3196,9 +3272,9 @@ Namespace FMSDBDataSetTableAdapters
                 If (Not (Me._connection) Is Nothing) Then
                     Return Me._connection
                 End If
-                If ((Not (Me._tableTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._tableTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._tableTableAdapter.Connection
+                If ((Not (Me._embarquesTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._embarquesTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._embarquesTableAdapter.Connection
                 End If
                 Return Nothing
             End Get
@@ -3213,7 +3289,7 @@ Namespace FMSDBDataSetTableAdapters
         Public ReadOnly Property TableAdapterInstanceCount() As Integer
             Get
                 Dim count As Integer = 0
-                If (Not (Me._tableTableAdapter) Is Nothing) Then
+                If (Not (Me._embarquesTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
                 Return count
@@ -3227,12 +3303,12 @@ Namespace FMSDBDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Function UpdateUpdatedRows(ByVal dataSet As FMSDBDataSet, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._tableTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Table.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+            If (Not (Me._embarquesTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Embarques.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._tableTableAdapter.Update(updatedRows))
+                    result = (result + Me._embarquesTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -3246,11 +3322,11 @@ Namespace FMSDBDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Function UpdateInsertedRows(ByVal dataSet As FMSDBDataSet, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._tableTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.Table.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+            If (Not (Me._embarquesTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.Embarques.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._tableTableAdapter.Update(addedRows))
+                    result = (result + Me._embarquesTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -3264,11 +3340,11 @@ Namespace FMSDBDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Function UpdateDeletedRows(ByVal dataSet As FMSDBDataSet, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._tableTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Table.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+            If (Not (Me._embarquesTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Embarques.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._tableTableAdapter.Update(deletedRows))
+                    result = (result + Me._embarquesTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -3313,8 +3389,8 @@ Namespace FMSDBDataSetTableAdapters
             If (dataSet.HasChanges = false) Then
                 Return 0
             End If
-            If ((Not (Me._tableTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._tableTableAdapter.Connection) = false)) Then
+            If ((Not (Me._embarquesTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._embarquesTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi"& _ 
                         "sma cadena de conexión.")
             End If
@@ -3350,13 +3426,13 @@ Namespace FMSDBDataSetTableAdapters
             Try 
                 '---- Prepare for update -----------
                 '
-                If (Not (Me._tableTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._tableTableAdapter, Me._tableTableAdapter.Connection)
-                    Me._tableTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
-                    Me._tableTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
-                    If Me._tableTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._tableTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._tableTableAdapter.Adapter)
+                If (Not (Me._embarquesTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._embarquesTableAdapter, Me._embarquesTableAdapter.Connection)
+                    Me._embarquesTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
+                    Me._embarquesTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
+                    If Me._embarquesTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._embarquesTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._embarquesTableAdapter.Adapter)
                     End If
                 End If
                 '
@@ -3419,9 +3495,9 @@ Namespace FMSDBDataSetTableAdapters
                 If workConnOpened Then
                     workConnection.Close
                 End If
-                If (Not (Me._tableTableAdapter) Is Nothing) Then
-                    Me._tableTableAdapter.Connection = CType(revertConnections(Me._tableTableAdapter),Global.System.Data.SqlClient.SqlConnection)
-                    Me._tableTableAdapter.Transaction = Nothing
+                If (Not (Me._embarquesTableAdapter) Is Nothing) Then
+                    Me._embarquesTableAdapter.Connection = CType(revertConnections(Me._embarquesTableAdapter),Global.System.Data.SqlClient.SqlConnection)
+                    Me._embarquesTableAdapter.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
                     Dim adapters((adaptersWithAcceptChangesDuringUpdate.Count) - 1) As Global.System.Data.Common.DataAdapter

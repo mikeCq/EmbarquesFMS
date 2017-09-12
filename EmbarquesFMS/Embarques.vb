@@ -3,6 +3,15 @@ Imports System.Data.Sql
 Public Class Embarques
     Dim cnn As New SqlConnection(VarGlob.ConexionPrincipal)
     Dim cmd As SqlCommand
+    Private _codigoEmbarque As Integer
+    Public Property codigoEmbarque() As Integer
+        Get
+            Return _codigoEmbarque
+        End Get
+        Set(value As Integer)
+            _codigoEmbarque = value
+        End Set
+    End Property
     Private Sub Embarques_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarCombos()
     End Sub
@@ -80,9 +89,9 @@ Public Class Embarques
             cmd.Parameters.Add(New SqlParameter("@NumeroLicencia", TbNoLicencia.Text))
             cmd.Parameters.Add(New SqlParameter("@Dueno", TbDueno.Text))
             cmd.Parameters.Add(New SqlParameter("@TelefonoDueno", TbTelefonoDueno.Text))
-            cmd.Parameters.Add(New SqlParameter("@PagarFlete", CDbl(TbFlete.Text)))
-            cmd.Parameters.Add(New SqlParameter("@FleteMenos", CDbl(TbDescuentoFlete.Text)))
-            cmd.Parameters.Add(New SqlParameter("@Anticipo", CDbl(TbAnticipo.Text)))
+            cmd.Parameters.Add(New SqlParameter("@PagarFlete", CDec(TbFlete.Text)))
+            cmd.Parameters.Add(New SqlParameter("@FleteMenos", CDec(TbDescuentoFlete.Text)))
+            cmd.Parameters.Add(New SqlParameter("@Anticipo", CDec(TbAnticipo.Text)))
             cmd.Parameters.Add(New SqlParameter("@AgenciaAduanal", TbAgenciaAduanal.Text))
             cmd.Parameters.Add(New SqlParameter("@TelefonoAgencia", TbTelefono.Text))
             cmd.Parameters.Add(New SqlParameter("@CelularAgencia", TbCelular.Text))
@@ -90,11 +99,16 @@ Public Class Embarques
             cmd.ExecuteNonQuery()
             TbIdEmbarque.Text = cmd.Parameters("@IdEmbarque").Value
             cnn.Close()
+            Imprimir(TbIdEmbarque.Text)
         Catch ex As Exception
             cnn.Close()
             MsgBox(ex.ToString)
         Finally
         End Try
+    End Sub
+    Private Sub Imprimir(ByVal IdBoleta As Integer)
+        _codigoEmbarque = IdBoleta
+        Reporte.ShowDialog()
     End Sub
     Private Sub CargarCombos()
         Dim dt As DataTable = New DataTable("Tabla")

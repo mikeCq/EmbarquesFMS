@@ -27,22 +27,22 @@ EmbarquesFMS
 Represents a strongly typed in-memory cache of data.
 </summary>
 </member>
-<member name="T:EmbarquesFMS.FMSDBDataSet.TableDataTable">
+<member name="T:EmbarquesFMS.FMSDBDataSet.EmbarquesDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:EmbarquesFMS.FMSDBDataSet.TableRow">
+<member name="T:EmbarquesFMS.FMSDBDataSet.EmbarquesRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:EmbarquesFMS.FMSDBDataSet.TableRowChangeEvent">
+<member name="T:EmbarquesFMS.FMSDBDataSet.EmbarquesRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:EmbarquesFMS.FMSDBDataSetTableAdapters.TableTableAdapter">
+<member name="T:EmbarquesFMS.FMSDBDataSetTableAdapters.EmbarquesTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
