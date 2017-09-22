@@ -4,6 +4,7 @@ Public Class Embarques
     Dim cnn As New SqlConnection(VarGlob.ConexionPrincipal)
     Dim cmd As SqlCommand
     Private _codigoEmbarque As Integer
+    Dim TablaDatos As DataTable
     Public Property codigoEmbarque() As Integer
         Get
             Return _codigoEmbarque
@@ -14,6 +15,7 @@ Public Class Embarques
     End Property
     Private Sub Embarques_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarCombos()
+        CargarInfo()
     End Sub
 
     Private Sub NuevoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuevoToolStripMenuItem.Click
@@ -22,17 +24,17 @@ Public Class Embarques
 
     Private Sub GuardarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GuardarToolStripMenuItem.Click
         Guardar()
+        CargarInfo()
     End Sub
 
     Private Sub ConsultarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultarToolStripMenuItem.Click
-
+        If TbIdEmbarque.Text <> "" Then Imprimir(TbIdEmbarque.Text)
     End Sub
 
     Private Sub SairToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SairToolStripMenuItem.Click
         Close()
     End Sub
     Private Sub Nuevo()
-
         TbIdEmbarque.Text = ""
         TbNoFactura.Text = ""
         CbAgricultores.SelectedValue = -1
@@ -60,6 +62,7 @@ Public Class Embarques
         TbAgenciaAduanal.Text = ""
         TbTelefono.Text = ""
         TbCelular.Text = ""
+        GbDatosGenerales.Enabled = True
     End Sub
     Private Sub Guardar()
         Try
@@ -155,19 +158,60 @@ Public Class Embarques
         CbAgricultores.SelectedValue = 1
     End Sub
 
-    Private Sub Label16_Click(sender As Object, e As EventArgs) Handles Label16.Click
-
+    Private Sub CargarInfo()
+        If cnn.State <> ConnectionState.Open Then cnn.Open()
+        Dim cmd As New SqlCommand("sp_LlenarEmbarques", cnn)
+        Dim da As New SqlDataAdapter(cmd)
+        Dim dt As New DataTable
+        da.Fill(dt)
+        DgvEmbarques.DataSource = dt
+        cnn.Close()
     End Sub
 
-    Private Sub Label19_Click(sender As Object, e As EventArgs) Handles Label19.Click
-
-    End Sub
-
-    Private Sub Label21_Click(sender As Object, e As EventArgs) Handles Label21.Click
-
-    End Sub
-
-    Private Sub Label25_Click(sender As Object, e As EventArgs) Handles Label25.Click
-
+    Private Sub SeleccionProducto(sender As Object, e As EventArgs) Handles DgvEmbarques.DoubleClick
+        If DgvEmbarques.RowCount = 0 Then
+            MessageBox.Show("No hay datos para seleccionar.")
+        ElseIf Not DgvEmbarques Is Nothing Then
+            _codigoEmbarque = CStr(DgvEmbarques.CurrentRow.Cells("IdEmbarque").Value)
+            If cnn.State <> ConnectionState.Open Then cnn.Open()
+            Dim cmd As New SqlCommand("sp_LlenarFormulario", cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.Add(New SqlParameter("@IdEmbarque", _codigoEmbarque))
+            Dim da As New SqlDataAdapter(cmd)
+            Dim dt As New DataTable
+            da.Fill(dt)
+            TablaDatos = dt
+            Dim row As DataRow = TablaDatos.Rows(0)
+            TbIdEmbarque.Text = row("IdEmbarque")
+            TbNoFactura.Text = row("NumeroFactura")
+            CbAgricultores.Text = row("NombreAgricultor")
+            TbDireccion.Text = row("Direccion")
+            TbTelefonoAgricultor.Text = row("TelefonoAgricultor")
+            TbPeso.Text = row("PesoKgs")
+            CbSandia.Text = row("Tipo")
+            TbObservaciones.Text = row("Observacion")
+            TbLineaTransporte.Text = row("LineaTransporte")
+            TbNoGuia.Text = row("NumeroGuia")
+            TbMarca.Text = row("CamionMarca")
+            TbColor.Text = row("Color")
+            TbNoMotor.Text = row("NumeroMotor")
+            TbAnio.Text = row("Ano")
+            TbNoSerie.Text = row("NumeroSerie")
+            TbPlacasTractor.Text = row("PlacasTractor")
+            TbPlacasJaula.Text = row("PlacasJaula")
+            TbOperador.Text = row("Operador")
+            TbTelefonoOperador.Text = row("Telefono")
+            TbNoLicencia.Text = row("NumeroLicencia")
+            TbDueno.Text = row("Dueno")
+            TbTelefonoDueno.Text = row("TelefonoDueno")
+            TbFlete.Text = row("PagarFlete")
+            TbDescuentoFlete.Text = row("FleteMenos")
+            TbAnticipo.Text = row("Anticipo")
+            TbAgenciaAduanal.Text = row("AgenciaAduanal")
+            TbTelefono.Text = row("TelefonoAgencia")
+            TbCelular.Text = row("CelularAgencia")
+            GbDatosGenerales.Enabled = False
+            cnn.Close()
+        End If
     End Sub
 End Class

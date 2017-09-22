@@ -22,6 +22,9 @@ Partial Class Embarques
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.MSMenu = New System.Windows.Forms.MenuStrip()
         Me.NuevoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GuardarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -85,7 +88,6 @@ Partial Class Embarques
         Me.TbIdEmbarque = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GbFiltros = New System.Windows.Forms.GroupBox()
-        Me.DgvEmbarques = New System.Windows.Forms.DataGridView()
         Me.BtFiltrar = New System.Windows.Forms.Button()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.CbSandiaFiltro = New System.Windows.Forms.ComboBox()
@@ -93,6 +95,7 @@ Partial Class Embarques
         Me.DtpFechaFin = New System.Windows.Forms.DateTimePicker()
         Me.DtpFechaInicio = New System.Windows.Forms.DateTimePicker()
         Me.Label27 = New System.Windows.Forms.Label()
+        Me.DgvEmbarques = New System.Windows.Forms.DataGridView()
         Me.MSMenu.SuspendLayout()
         Me.GbDatosGenerales.SuspendLayout()
         Me.GbFiltros.SuspendLayout()
@@ -128,8 +131,8 @@ Partial Class Embarques
         'SairToolStripMenuItem
         '
         Me.SairToolStripMenuItem.Name = "SairToolStripMenuItem"
-        Me.SairToolStripMenuItem.Size = New System.Drawing.Size(38, 20)
-        Me.SairToolStripMenuItem.Text = "Sair"
+        Me.SairToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
+        Me.SairToolStripMenuItem.Text = "Salir"
         '
         'GbDatosGenerales
         '
@@ -666,14 +669,6 @@ Partial Class Embarques
         Me.GbFiltros.TabStop = False
         Me.GbFiltros.Text = "Filtros"
         '
-        'DgvEmbarques
-        '
-        Me.DgvEmbarques.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvEmbarques.Location = New System.Drawing.Point(10, 100)
-        Me.DgvEmbarques.Name = "DgvEmbarques"
-        Me.DgvEmbarques.Size = New System.Drawing.Size(616, 497)
-        Me.DgvEmbarques.TabIndex = 56
-        '
         'BtFiltrar
         '
         Me.BtFiltrar.Location = New System.Drawing.Point(214, 68)
@@ -731,6 +726,42 @@ Partial Class Embarques
         Me.Label27.Size = New System.Drawing.Size(65, 13)
         Me.Label27.TabIndex = 0
         Me.Label27.Text = "Fecha Inicio"
+        '
+        'DgvEmbarques
+        '
+        Me.DgvEmbarques.AllowUserToAddRows = False
+        Me.DgvEmbarques.AllowUserToDeleteRows = False
+        Me.DgvEmbarques.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.DgvEmbarques.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical
+        Me.DgvEmbarques.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvEmbarques.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.DgvEmbarques.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DgvEmbarques.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.DgvEmbarques.Location = New System.Drawing.Point(6, 95)
+        Me.DgvEmbarques.Name = "DgvEmbarques"
+        Me.DgvEmbarques.ReadOnly = True
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DgvEmbarques.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.DgvEmbarques.RowHeadersVisible = False
+        Me.DgvEmbarques.RowHeadersWidth = 40
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DgvEmbarques.RowsDefaultCellStyle = DataGridViewCellStyle3
+        Me.DgvEmbarques.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DgvEmbarques.Size = New System.Drawing.Size(620, 502)
+        Me.DgvEmbarques.TabIndex = 20
         '
         'Embarques
         '
@@ -816,7 +847,6 @@ Partial Class Embarques
     Friend WithEvents Label26 As Label
     Friend WithEvents TbDireccion As TextBox
     Friend WithEvents GbFiltros As GroupBox
-    Friend WithEvents DgvEmbarques As DataGridView
     Friend WithEvents BtFiltrar As Button
     Friend WithEvents Label29 As Label
     Friend WithEvents CbSandiaFiltro As ComboBox
@@ -827,4 +857,5 @@ Partial Class Embarques
     Friend WithEvents Label30 As Label
     Friend WithEvents Label31 As Label
     Friend WithEvents TbTelefonoAgricultor As TextBox
+    Friend WithEvents DgvEmbarques As DataGridView
 End Class
